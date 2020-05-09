@@ -6,8 +6,8 @@ interface LoginInterface {
    newUser: any;
 }
 
-function handleChange(event: React.FormEvent<HTMLInputElement>, state:any):void {
-   state(event.currentTarget.value);
+function handleChange(event: {target: HTMLInputElement}, state:any):void {
+   state(event.target.value);
 }
 
 function sendLoginCred(login:string, password:string, props:LoginInterface) {
