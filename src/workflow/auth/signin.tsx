@@ -4,7 +4,7 @@ interface SignInInterface {
    //
 }
 
-const SignIn: React.FunctionComponent<SignInInterface> = (props: SignInInterface) => {
+const SignIn: React.FunctionComponent<SignInInterface> = (props: SignInInterface):React.ReactElement => {
    return (
       <div className="container pt-5">
          <div className="col-sm-6 p-0 mx-auto rounded shadow">

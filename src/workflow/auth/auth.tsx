@@ -1,28 +1,35 @@
 import React, { Fragment } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Login from './login';
 import SignIn from './signin';
 import { type } from 'os';
-
-type Props = {
-   history: Object;
-}
+import { postRequest } from '../../helpers/helper';
 
 type State = {
-   loginData: String | Object;
+   loginData: string | object;
    // signinData: String;
-   userExist: Boolean;
+   userExist: boolean;
    // refDataFromChild: String;
 }
 
-class Auth extends React.Component<Props, State> {
+class Auth extends React.Component<RouteComponentProps, State> {
    state: State = {
       userExist: true,
       loginData: '',
    };
 
-   getLoginCredentials = (credentials: Object) => {
-      this.setState({ loginData: credentials })
+   getLoginCredentials = (credentials: object) => {
+      this.setState({ loginData: credentials }, () => {
+         postRequest('post', 'login.js', this.state.loginData, (XHTTP: XMLHttpRequest) => {
+            const response = JSON.parse(XHTTP.responseText);
+            console.log(response);
+            if (response.access) {
+               window.location.assign(`${response.document[0]._id}/home`);
+            } else {
+               alert('Incorrect UserName or Password');
+            }
+         });
+      });
    }
    
    createUser = (a:boolean):void => {
@@ -42,4 +49,4 @@ class Auth extends React.Component<Props, State> {
    }
 }
 
-export default (Auth);
+export default withRouter(Auth);
