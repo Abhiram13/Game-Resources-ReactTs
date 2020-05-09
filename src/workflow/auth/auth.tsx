@@ -7,15 +7,15 @@ import { postRequest } from '../../helpers/helper';
 
 type State = {
    loginData: string | object;
-   // signinData: String;
+   signinData: string | object;
    userExist: boolean;
-   // refDataFromChild: String;
 }
 
 class Auth extends React.Component<RouteComponentProps, State> {
    state: State = {
       userExist: true,
       loginData: '',
+      signinData: '',
    };
 
    getLoginCredentials = (credentials: object) => {
@@ -31,8 +31,22 @@ class Auth extends React.Component<RouteComponentProps, State> {
          });
       });
    }
+
+   getSignUpCredentials = (credentials: object) => {
+      this.setState({ signinData: credentials }, () => {
+         postRequest('post', 'signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
+            const response = JSON.parse(XHTTP.responseText);
+            alert((response.status) ? 'User has been Registered Successfully' : 'User has already been Registered');
+            this.setState({ userExist: true });
+         })
+      })
+   }
    
    createUser = (a:boolean):void => {
+      this.setState({ userExist: a });
+   }
+
+   existingUser = (a:boolean):void => {
       this.setState({ userExist: a });
    }
 
@@ -42,7 +56,7 @@ class Auth extends React.Component<RouteComponentProps, State> {
             {
                this.state.userExist
                   ? <Login credentials={this.getLoginCredentials} newUser={this.createUser} />
-                  : <SignIn />
+                  : <SignIn create={this.getSignUpCredentials} exist={this.existingUser} />
             }          
          </Fragment>
       )
