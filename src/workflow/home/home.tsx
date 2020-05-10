@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { getRequest } from '../../helpers/helper';
 
 type State = {
    data: any | Array<any>;
@@ -30,16 +31,8 @@ class Home extends React.Component<RouteComponentProps, State> {
       loggedIn: false,
    }
 
-   async callBackendAPI() {
-      const response = await fetch('/getItem');
-      const body = await response.json();
-
-      if (response.status !== 200) throw Error(body.message);
-      return body;
-   }
-
    componentDidMount() {
-      this.callBackendAPI().then((response:Data) =>
+      getRequest('getItem').then((response:Data) =>
          this.setState({
             data: response.documents,
             backup: response.documents,
@@ -105,8 +98,10 @@ class Home extends React.Component<RouteComponentProps, State> {
                </div>
 
             </div>
-            {/* <button onClick={() => this.props.history.push('/add')}>Add</button> */}
+            <button onClick={() => this.props.history.push('/add')}>Add</button>
          </Fragment>
       )
    }
 }
+
+export default withRouter(Home);
