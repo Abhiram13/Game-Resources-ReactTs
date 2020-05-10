@@ -1,7 +1,6 @@
-import React, { Fragment, Component, useState } from 'react';
+import React, { useState } from 'react';
 
 interface LoginInterface {
-   // getData: any;
    credentials: any;
    newUser: any;
 }

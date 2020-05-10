@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { getRequest } from '../../helpers/helper';
+import { ItemProvider, Context } from '../../context/context';
+import Aside from './aside/aside';
 
 type State = {
    data: any | Array<any>;
    char: string;
-   backup: string | Array<object>;
+   backup: string | Array<object> | any;
    user: string | object;
    loggedIn: boolean;
 }
@@ -40,9 +42,46 @@ class Home extends React.Component<RouteComponentProps, State> {
       )
    }
 
+   changeCharacter(character:string) {
+      let array = this.state.backup;
+      let anotherArray:any[] = [];
+
+      if (character === '') {
+         this.setState({ data: this.state.backup });
+         return;
+      }
+
+      switch (character.substring(0, 1)) {
+         case '#':
+            if (character.length > 1) {
+               let str:string = character.slice(1, character.length);
+
+               array.filter((item:Item) => {
+                  if ((item.category.substring(0, character.length - 1)).toUpperCase() === str.toUpperCase()) {
+                     anotherArray.push(item);
+                  }
+               });
+            } else return;
+            break;
+         default:
+            array.filter(function (item:Item) {
+               if ((item.itemName.substring(0, character.length)).toUpperCase() === character.toUpperCase()) {
+                  anotherArray.push(item);
+               }
+            });
+            break;
+      }
+
+      this.setState({ data: anotherArray });
+      return;
+   }
+
    render(): React.ReactNode {
-      // const { firstname, lastname } = this.state.user;
       const { data } = this.state;
+      const contextObject:Context = {
+         total: data.length,
+         data: data,
+      }
 
       return (
          <Fragment>
@@ -52,15 +91,14 @@ class Home extends React.Component<RouteComponentProps, State> {
             </header>
 
             <div className="container p-0 mx-auto mt-5">
-               {/* <ItemProvider value={{ total: data.length, data: data }}>
-                        <Aside getValueForSearch={this.changeCharacter.bind(this)} />
-                    </ItemProvider> */}
+               <ItemProvider value={contextObject}>
+                  <Aside getValueForSearch={this.changeCharacter.bind(this)} />
+               </ItemProvider>
                <hr />
 
                <div className="border rounded d-flex flex-wrap position-relative">
                   {(data !== '') &&
                      data.map((item: Item, i:number) => {
-                        console.log(item);
                         return (
                            <Fragment key={item._id}>
                               <div
