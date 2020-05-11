@@ -47,7 +47,7 @@ class Edit extends React.Component<Props, Item> {
 
      updateItem = () => {
           postRequest('post', 'updateItem.js', this.state, (xhttp:XMLHttpRequest) => {
-               console.log(xhttp);
+               //
           })
      }
 

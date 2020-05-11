@@ -81,7 +81,7 @@ class Home extends React.Component<RouteComponentProps, State> {
 
      deleteItem = (item:Item):void => {
           postRequest('post', 'deleteItem.js', item, (xhttp: XMLHttpRequest) => {
-               console.log(xhttp);
+               //
           })
      }
 
