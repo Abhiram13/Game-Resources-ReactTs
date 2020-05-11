@@ -1,7 +1,7 @@
 import React from 'react';
 import { Item } from './home';
 
-interface Props {
+export interface Props {
      item: Item,
 }
 
@@ -19,7 +19,11 @@ const View: React.FunctionComponent<Props> = (props: Props) => {
                          <div className="modal-body">
                               <div className="d-flex justify-content-between col-sm p-0">
                                    <section className="col-sm-3 p-0 pt-2">
-                                        <img alt="" src={imageURL} width='120' height='120' />
+                                        <img
+                                             alt=""
+                                             src={imageURL ? imageURL : 'https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png'}
+                                             width='120'
+                                             height='120' />
                                    </section>
                                    <section className="col-sm-8 p-0">
                                         <h5><strong>{itemName}</strong></h5>

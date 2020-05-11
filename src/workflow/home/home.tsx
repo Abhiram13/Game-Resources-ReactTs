@@ -4,6 +4,7 @@ import { getRequest } from '../../helpers/helper';
 import { ItemProvider, Context } from '../../context/context';
 import Aside from './aside/aside';
 import View from './viewModal';
+import Edit from './editModal';
 
 type State = {
      data: any | Array<any>;
@@ -23,6 +24,7 @@ export interface Item {
      category: string;
      imageURL: string;
      description: string;
+     rating?: number;
 }
 
 class Home extends React.Component<RouteComponentProps, State> {
@@ -100,11 +102,9 @@ class Home extends React.Component<RouteComponentProps, State> {
                                              <Fragment key={item._id}>
                                                   <div
                                                        className="p-0 position-relative mr-3 d-flex justify-content-between mb-4 shadow-sm pointer"
-                                                       title={item.category}
-                                                       data-toggle="modal"
-                                                       data-target={`#${item._id}`}
+                                                       title={item.category}                                                       
                                                        style={{ height: '200px', width: '48%' }}>
-                                                       <div className="rounded" style={{ width: '35%' }}>
+                                                       <div className="rounded" style={{ width: '35%' }} data-toggle="modal" data-target={`#${item._id}`}>
                                                             {
                                                                  (item.imageURL === "")
                                                                       ? <div className="w-100 h-100 bg-white shadow-sm">
@@ -121,7 +121,14 @@ class Home extends React.Component<RouteComponentProps, State> {
                                                             <div className="p-3">
                                                                  <div className="d-flex justify-content-between">
                                                                       <h4 className="m-0 p-0">{item.itemName}</h4>
-                                                                      <img src='https://simpleicon.com/wp-content/uploads/pencil-256x256.png' width='20' height='20' className="align-self-center" alt="" />
+                                                                      <img
+                                                                           data-target={`#${item._id}+${item.itemName}`}
+                                                                           data-toggle='modal'
+                                                                           src='https://simpleicon.com/wp-content/uploads/pencil-256x256.png'
+                                                                           width='20'
+                                                                           height='20'                                                                           
+                                                                           className="align-self-center"
+                                                                           alt="" />
                                                                  </div>
                                                                  <p className="p-0 m-0 mt-3" style={{ fontSize: 'small', overflow: 'hidden', height: '118px' }}>{item.description}</p>
                                                             </div>
@@ -130,6 +137,7 @@ class Home extends React.Component<RouteComponentProps, State> {
 
                                                   {/* MODAL */}
                                                   <View item={item} />
+                                                  <Edit item={item} />
                                              </Fragment>
                                         )
                                    })
