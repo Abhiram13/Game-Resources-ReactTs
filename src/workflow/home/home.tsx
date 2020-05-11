@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { getRequest } from '../../helpers/helper';
+import { getRequest, postRequest } from '../../helpers/helper';
 import { ItemProvider, Context } from '../../context/context';
 import Aside from './aside/aside';
 import View from './viewModal';
@@ -79,6 +79,12 @@ class Home extends React.Component<RouteComponentProps, State> {
           return;
      }
 
+     deleteItem = (item:Item):void => {
+          postRequest('post', 'deleteItem.js', item, (xhttp: XMLHttpRequest) => {
+               console.log(xhttp);
+          })
+     }
+
      render(): React.ReactNode {
           const { data } = this.state;
           const contextObject: Context = {
@@ -128,6 +134,13 @@ class Home extends React.Component<RouteComponentProps, State> {
                                                                            width='20'
                                                                            height='20'                                                                           
                                                                            className="align-self-center"
+                                                                           alt="" />
+                                                                      <img
+                                                                           src='https://image.flaticon.com/icons/png/512/61/61848.png'
+                                                                           width='20'
+                                                                           height='20'                                                                           
+                                                                           className="align-self-center"
+                                                                           onClick={() => this.deleteItem(item)}
                                                                            alt="" />
                                                                  </div>
                                                                  <p className="p-0 m-0 mt-3" style={{ fontSize: 'small', overflow: 'hidden', height: '118px' }}>{item.description}</p>

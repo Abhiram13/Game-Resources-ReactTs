@@ -1,7 +1,7 @@
 import React from 'react';
 import { Props } from './viewModal';
 import { Item } from './home';
-import { getRequest } from '../../helpers/helper';
+import { postRequest } from '../../helpers/helper';
 
 class Edit extends React.Component<Props, Item> {
      state:Item = {
@@ -37,12 +37,18 @@ class Edit extends React.Component<Props, Item> {
                     this.setState({ imageURL: event.target.value });
                     return;
                case 'editItemRating':
-                    this.setState({ rating: Number(event.target.value) });
+                    Number(event.target.value) !== NaN && this.setState({ rating: Number(event.target.value) });
                     return;
                default:
                     this.setState({ description: event.target.value });
                     return;
           }
+     }
+
+     updateItem = () => {
+          postRequest('post', 'updateItem.js', this.state, (xhttp:XMLHttpRequest) => {
+               console.log(xhttp);
+          })
      }
 
      render(): React.ReactNode {
@@ -56,6 +62,7 @@ class Edit extends React.Component<Props, Item> {
                                         <span aria-hidden="true">&times;</span>
                                    </button>
                               </div>
+
                               <div className="modal-body">
                                    <section className="col-sm p-0">
                                         <section className="d-flex justify-content-between">
@@ -97,7 +104,8 @@ class Edit extends React.Component<Props, Item> {
                                    </section>
                               </div>
 
-                              <div className="modal-footer">
+                              <div className="modal-footer d-flex justify-content-between">
+                                   <button type="button" className="btn btn-info" onClick={this.updateItem}>Update</button>
                                    <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
                               </div>
                          </div>
