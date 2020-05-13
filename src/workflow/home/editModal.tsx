@@ -10,7 +10,9 @@ class Edit extends React.Component<Props, Item> {
           description: '',
           imageURL: '',
           itemName: '',
-          rating: 0,          
+          rating: 0,
+          comments: [],
+          likes: [],
      }
 
      componentDidMount() {

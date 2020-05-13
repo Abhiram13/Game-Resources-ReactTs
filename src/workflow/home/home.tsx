@@ -25,6 +25,8 @@ export interface Item {
      imageURL: string;
      description: string;
      rating?: number;
+     likes: any[],
+     comments: any[],
 }
 
 class Home extends React.Component<RouteComponentProps, State> {
@@ -93,8 +95,12 @@ class Home extends React.Component<RouteComponentProps, State> {
           })
      }
 
-     like = ():void => {
-          postRequest('post', '/updateItem.js/likes', this.state.user, (xhttp:XMLHttpRequest) => {
+     like = (item:Item):void => {
+          const obj = {
+               item: item,
+               user: this.state.user,
+          }
+          postRequest('post', 'likeItemByUser.js', obj, (xhttp:XMLHttpRequest) => {
                console.log(xhttp);
           })
      }
@@ -105,8 +111,6 @@ class Home extends React.Component<RouteComponentProps, State> {
                total: data.length,
                data: data,
           }
-
-          console.log(this.state.user);
 
           return (
                <Fragment>
@@ -143,7 +147,9 @@ class Home extends React.Component<RouteComponentProps, State> {
                                                                  <h5 className="text-center">{item.itemName}</h5>
                                                             </section>
                                                             <section className="d-flex justify-content-between px-3">
-                                                                 <small onClick={() => this.like()}>Like</small>
+                                                                 <small onClick={() => this.like(item)}>
+                                                                      {`Likes: ${item.likes.length}`}
+                                                                 </small>
                                                                  <small>Comment</small>
                                                             </section>
                                                        </section>
