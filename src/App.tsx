@@ -9,7 +9,7 @@ function App() {
    return (
       <Router>
          <Route exact path='/' component={Auth} />
-         <Route path='/home' component={Home} />
+         <Route path='/:id/home' component={Home} />
          <Route path='/add' component={Form} />
       </Router>
    );

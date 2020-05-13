@@ -22,7 +22,7 @@ class Auth extends React.Component<RouteComponentProps, State> {
                postRequest('post', 'login.js', this.state.loginData, (XHTTP: XMLHttpRequest) => {
                     const response = JSON.parse(XHTTP.responseText);
                     if (response.access) {
-                         window.location.assign(`home`);
+                         window.location.assign(`/${response.document[0]._id}/home`);
                     } else {
                          alert('Incorrect UserName or Password');
                     }

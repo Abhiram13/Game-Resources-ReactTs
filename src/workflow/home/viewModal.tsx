@@ -6,7 +6,7 @@ export interface Props {
 }
 
 const View: React.FunctionComponent<Props> = (props: Props) => {
-     const { _id, itemName, description, category, imageURL } = props.item;
+     const { _id, itemName, description, imageURL } = props.item;
      return (
           <div className="modal fade" id={_id} role="dialog" tabIndex={-1} aria-labelledby={_id} aria-hidden="true">
                <div className="modal-dialog" role="document">
