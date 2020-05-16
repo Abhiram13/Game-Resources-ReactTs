@@ -39,7 +39,7 @@ class Edit extends React.Component<Props, Item> {
                     this.setState({ imageURL: event.target.value });
                     return;
                case 'editItemRating':
-                    Number(event.target.value) !== NaN && this.setState({ rating: Number(event.target.value) });
+                    isNaN(Number(event.target.value)) && this.setState({ rating: Number(event.target.value) });
                     return;
                default:
                     this.setState({ description: event.target.value });
