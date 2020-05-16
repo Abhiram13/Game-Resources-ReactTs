@@ -107,13 +107,23 @@ class Home extends React.Component<RouteComponentProps, State> {
           })
      }
 
-     like = (item:Item):void => {
+     like = (item: Item): void => {
           const obj = {
                item: item,
                user: this.state.user,
           }
-          postRequest('post', 'likeItemByUser.js', obj, (xhttp:XMLHttpRequest) => {
-               console.log(xhttp);
+          postRequest('post', 'likeItemByUser.js', obj, (xhttp: XMLHttpRequest) => {
+               const response = JSON.parse(xhttp.responseText);
+
+               //this below function calls server to get the list of all Items
+               if (response) {
+                    getRequest('getItem').then((response: Data) =>
+                         this.setState({
+                              data: response.documents,
+                              backup: response.documents,
+                         })
+                    )
+               }               
           })
      }
 
@@ -123,8 +133,6 @@ class Home extends React.Component<RouteComponentProps, State> {
                total: data.length,
                data: data,
           }
-
-          console.log(this.state.user);
 
           return (
                <Fragment>
@@ -161,7 +169,7 @@ class Home extends React.Component<RouteComponentProps, State> {
                                                                  <h5 className="text-center">{item.itemName}</h5>
                                                             </section>
                                                             <section className="d-flex justify-content-between px-3">
-                                                                 <small onClick={() => this.like(item)}>
+                                                                 <small onClick={() => this.like(item)} className="pointer">
                                                                       {`Likes: ${item.likes.length}`}
                                                                  </small>
                                                                  <small>Comment</small>
