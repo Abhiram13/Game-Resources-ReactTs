@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Auth from './workflow/auth/auth';
 import Home from './workflow/home/home';
 import Form from './workflow/home/form';
+import Details from './workflow/details/details';
 import './styles/body.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Router>
          <Route exact path='/' component={Auth} />
          <Route path='/:id/home' component={Home} />
+         <Route path="/:id/details" component={Details} />
          <Route path='/add' component={Form} />
       </Router>
    );

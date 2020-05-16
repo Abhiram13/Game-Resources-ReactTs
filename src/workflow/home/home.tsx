@@ -127,6 +127,13 @@ class Home extends React.Component<RouteComponentProps, State> {
           })
      }
 
+     itemDetails = (item:Item): void => {
+          if ((this.state.user as User).isAdmin) {
+               window.location.assign(`/${item._id}/details`);
+               return;
+          }
+     }
+
      render(): React.ReactNode {
           const { data } = this.state;
           const contextObject: Context = {
@@ -166,7 +173,7 @@ class Home extends React.Component<RouteComponentProps, State> {
                                                        <section className="col-sm p-0 bg-white h-25">
                                                             <section>
                                                                  <small className="d-block text-center">{item.category}</small>
-                                                                 <h5 className="text-center">{item.itemName}</h5>
+                                                                 <h5 className="text-center itemTitle pointer" onClick={() => this.itemDetails(item)}>{item.itemName}</h5>
                                                             </section>
                                                             <section className="d-flex justify-content-between px-3">
                                                                  <small onClick={() => this.like(item)} className="pointer">
