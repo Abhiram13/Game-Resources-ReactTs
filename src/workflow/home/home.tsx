@@ -6,16 +6,28 @@ import Aside from './aside/aside';
 import View from './viewModal';
 import Edit from './editModal';
 
-type State = {
+interface State {
      data: any | Array<any>;
      char: string;
      backup: string | Array<object> | any;
-     user: string | object;
+     user: User | object;
      loggedIn: boolean;
 }
 
 interface Data {
      documents: Array<object>;
+}
+
+interface User {
+     _id: string;
+     comments: object[];
+     firstname: string;
+     isAdmin: boolean;
+     lastname: string;
+     likes: object[];
+     loggedIn: null | boolean;
+     password: string;
+     username: string;
 }
 
 export interface Item {
@@ -34,7 +46,7 @@ class Home extends React.Component<RouteComponentProps, State> {
           data: '',
           char: '',
           backup: '',
-          user: '',
+          user: {},
           loggedIn: false,
      }
 
@@ -112,6 +124,8 @@ class Home extends React.Component<RouteComponentProps, State> {
                data: data,
           }
 
+          console.log(this.state.user);
+
           return (
                <Fragment>
                     <div className="container p-0 mx-auto mt-5">
@@ -165,7 +179,7 @@ class Home extends React.Component<RouteComponentProps, State> {
                          </div>
 
                     </div>
-                    <button onClick={() => this.props.history.push('/add')}>Add</button>
+                    {(this.state.user as User).isAdmin && <button onClick={() => this.props.history.push('/add')}>Add</button>}
                </Fragment>
           )
      }
