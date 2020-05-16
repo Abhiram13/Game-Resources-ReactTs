@@ -30,6 +30,13 @@ interface User {
      username: string;
 }
 
+export interface Likes {
+     _id: string;
+     username: string;
+     firstname: string;
+     lastname: string;     
+}
+
 export interface Item {
      _id: string;
      itemName: string;
@@ -37,7 +44,7 @@ export interface Item {
      imageURL: string;
      description: string;
      rating?: number;
-     likes: any[],
+     likes: Likes[],
      comments: any[],
 }
 
@@ -128,8 +135,9 @@ class Home extends React.Component<RouteComponentProps, State> {
      }
 
      itemDetails = (item:Item): void => {
-          if ((this.state.user as User).isAdmin) {
-               window.location.assign(`/${item._id}/details`);
+          const user = this.state.user as User;
+          if (user.isAdmin) {
+               window.location.assign(`/${item._id}_${user._id}/details`);
                return;
           }
      }
