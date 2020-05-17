@@ -111,7 +111,7 @@ class Home extends React.Component<RouteComponentProps, State> {
 
           return (
                <Fragment>
-                    <Header userDetails={this.state.user as User} />
+                    <Header />
                     <div className="container p-0 mx-auto mt-5">
                          <ItemProvider value={contextObject}>
                               <Aside getValueForSearch={this.changeCharacter.bind(this)} />

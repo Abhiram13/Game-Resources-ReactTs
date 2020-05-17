@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { HeaderProps, User } from '../../../helpers/interface';
+import { User } from '../../../helpers/interface';
 import request from '../../../helpers/helper';
 
 function redirect(url:string):void {
      window.location.assign(url);
 }
 
-const Header: React.FunctionComponent<HeaderProps> = (props: HeaderProps): React.ReactElement => {
+const Header: React.FunctionComponent = (): React.ReactElement => {
 
      const obj:User = {
           _id: '',
