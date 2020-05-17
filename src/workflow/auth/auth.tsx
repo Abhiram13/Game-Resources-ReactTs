@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Login from './login';
 import SignIn from './signin';
-import { postRequest } from '../../helpers/helper';
+import { request } from '../../helpers/helper';
 
 type State = {
      loginData: string | object;
@@ -19,20 +19,20 @@ class Auth extends React.Component<RouteComponentProps, State> {
 
      getLoginCredentials = (credentials: object) => {
           this.setState({ loginData: credentials }, () => {
-               postRequest('post', 'login.js', this.state.loginData, (XHTTP: XMLHttpRequest) => {
+               request.post('login.js', this.state.loginData, (XHTTP: XMLHttpRequest) => {
                     const response = JSON.parse(XHTTP.responseText);
                     if (response.access) {
                          window.location.assign(`/${response.document[0]._id}/home`);
                     } else {
                          alert('Incorrect UserName or Password');
                     }
-               });
+               })
           });
      }
 
      getSignUpCredentials = (credentials: object) => {
           this.setState({ signinData: credentials }, () => {
-               postRequest('post', 'signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
+               request.post('signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
                     const response = JSON.parse(XHTTP.responseText);
                     alert((response.status) ? 'User has been Registered Successfully' : 'User has already been Registered');
                     this.setState({ userExist: true });
