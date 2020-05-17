@@ -3,15 +3,10 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Login from './login';
 import SignIn from './signin';
 import { request } from '../../helpers/helper';
+import { AuthoriseState } from '../../helpers/interface';
 
-type State = {
-     loginData: string | object;
-     signinData: string | object;
-     userExist: boolean;
-}
-
-class Auth extends React.Component<RouteComponentProps, State> {
-     state: State = {
+class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
+     state: AuthoriseState = {
           userExist: true,
           loginData: '',
           signinData: '',

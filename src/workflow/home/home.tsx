@@ -1,52 +1,11 @@
 import React, { Fragment } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { getRequest, postRequest } from '../../helpers/helper';
+import { State, Data, Item, User } from '../../helpers/interface';
 import { ItemProvider, Context } from '../../context/context';
 import Aside from './aside/aside';
 import View from './viewModal';
 import Edit from './editModal';
-
-interface State {
-     data: any | Array<any>;
-     char: string;
-     backup: string | Array<object> | any;
-     user: User | object;
-     loggedIn: boolean;
-}
-
-interface Data {
-     documents: Array<object>;
-}
-
-interface User {
-     _id: string;
-     comments: object[];
-     firstname: string;
-     isAdmin: boolean;
-     lastname: string;
-     likes: object[];
-     loggedIn: null | boolean;
-     password: string;
-     username: string;
-}
-
-export interface Likes {
-     _id: string;
-     username: string;
-     firstname: string;
-     lastname: string;     
-}
-
-export interface Item {
-     _id: string;
-     itemName: string;
-     category: string;
-     imageURL: string;
-     description: string;
-     rating?: number;
-     likes: Likes[],
-     comments: any[],
-}
 
 class Home extends React.Component<RouteComponentProps, State> {
      state: State = {

@@ -1,16 +1,9 @@
 import React from 'react';
 import { postRequest } from '../../helpers/helper';
+import { FormState } from '../../helpers/interface';
 
-interface State {
-     itemName: string;
-     description: string;
-     category: string;
-     imageURL: string;
-     rating: number;
-}
-
-class Form extends React.Component<State> {
-     state: State = {
+class Form extends React.Component<FormState> {
+     state: FormState = {
           itemName: '',
           description: '',
           category: '',

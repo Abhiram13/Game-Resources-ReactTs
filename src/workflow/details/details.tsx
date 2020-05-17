@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { getRequest } from '../../helpers/helper';
-import { Item, Likes } from '../home/home';
+import { Item, Likes } from '../../helpers/interface';
 
 function renderLikes(likes: Likes[], userId: string) {
      let array = [];

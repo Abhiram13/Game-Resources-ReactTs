@@ -1,11 +1,7 @@
 import React from 'react';
-import { Item } from './home';
+import { ViewModalProps } from '../../helpers/interface';
 
-export interface Props {
-     item: Item,
-}
-
-const View: React.FunctionComponent<Props> = (props: Props) => {
+const View: React.FunctionComponent<ViewModalProps> = (props: ViewModalProps) => {
      const { _id, itemName, description, imageURL } = props.item;
      return (
           <div className="modal fade" id={_id} role="dialog" tabIndex={-1} aria-labelledby={_id} aria-hidden="true">

@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-
-interface SignInInterface {
-     create: any;
-     exist: any;
-}
+import { SignInInterface } from '../../helpers/interface';
 
 function handleChange(event: { target: HTMLInputElement }, state: any): void {
-     event.target.type === 'checkbox' ? state(event.target.checked) : state(event.target.value);
-     // state(event.target.value);
+     event.target.type === 'checkbox' ? state(event.target.checked) : state(event.target.value);     
 }
 
 function sendData(userName: string, firstName: string, lastName: string, passWord: string, checkBox: boolean, props: SignInInterface) {

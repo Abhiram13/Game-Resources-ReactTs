@@ -1,9 +1,8 @@
 import React from 'react';
-import { Props } from './viewModal';
-import { Item } from './home';
 import { postRequest } from '../../helpers/helper';
+import { Item, ViewModalProps } from '../../helpers/interface';
 
-class Edit extends React.Component<Props, Item> {
+class Edit extends React.Component<ViewModalProps, Item> {
      state:Item = {
           _id: '',
           category: '',
