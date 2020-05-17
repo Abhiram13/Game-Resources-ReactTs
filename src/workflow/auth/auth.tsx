@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Login from './login';
 import SignIn from './signin';
-import { request } from '../../helpers/helper';
+import request from '../../helpers/helper';
 import { AuthoriseState } from '../../helpers/interface';
 
 class Auth extends React.Component<RouteComponentProps, AuthoriseState> {

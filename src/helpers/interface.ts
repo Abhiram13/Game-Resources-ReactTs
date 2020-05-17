@@ -82,3 +82,7 @@ export interface SearchNameState {
      list: string,
      array: Item[],
 }
+
+export interface HeaderProps {
+     userDetails?: User;
+}

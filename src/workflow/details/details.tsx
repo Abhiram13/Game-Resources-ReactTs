@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { getRequest } from '../../helpers/helper';
+import request from '../../helpers/helper';
 import { Item, Likes } from '../../helpers/interface';
 
 function renderLikes(likes: Likes[], userId: string) {
@@ -36,7 +36,7 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
      useEffect(() => {
           const [itemId, userId] = window.location.pathname.split('/')[1].split('_');
 
-          getRequest(`${itemId}/details`).then((response: Item) => {
+          request.get(`${itemId}/details`).then((response: Item) => {
                getItem(response as Item);
                getUserId(userId);
           });

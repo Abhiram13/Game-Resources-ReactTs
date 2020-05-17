@@ -1,5 +1,5 @@
 import React from 'react';
-import { postRequest } from '../../helpers/helper';
+import request from '../../helpers/helper';
 import { Item, ViewModalProps } from '../../helpers/interface';
 
 class Edit extends React.Component<ViewModalProps, Item> {
@@ -47,7 +47,7 @@ class Edit extends React.Component<ViewModalProps, Item> {
      }
 
      updateItem = () => {
-          postRequest('post', 'updateItem.js', this.state, (xhttp:XMLHttpRequest) => {
+          request.post('updateItem.js', this.state, (xhttp:XMLHttpRequest) => {
                //
           })
      }

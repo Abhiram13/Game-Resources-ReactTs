@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { getRequest, postRequest } from '../../helpers/helper';
+import request from '../../helpers/helper';
 import { State, Data, Item, User } from '../../helpers/interface';
 import { ItemProvider, Context } from '../../context/context';
 import Aside from './aside/aside';
 import View from './viewModal';
 import Edit from './editModal';
+import Header from './header/header';
 
 class Home extends React.Component<RouteComponentProps, State> {
      state: State = {
@@ -18,14 +19,14 @@ class Home extends React.Component<RouteComponentProps, State> {
 
      componentDidMount() {
           //this below function calls server to get the details of User through UserID
-          getRequest(`${window.location.pathname.split('/')[1]}/home`).then((response:object[]) => {
+          request.get(`${window.location.pathname.split('/')[1]}/home`).then((response:object[]) => {
                this.setState({
                     user: response[0],
                })
           })
 
           //this below function calls server to get the list of all Items
-          getRequest('getItem').then((response: Data) =>
+          request.get('getItem').then((response: Data) =>
                this.setState({
                     data: response.documents,
                     backup: response.documents,
@@ -68,7 +69,7 @@ class Home extends React.Component<RouteComponentProps, State> {
      }
 
      deleteItem = (item:Item):void => {
-          postRequest('post', 'deleteItem.js', item, (xhttp: XMLHttpRequest) => {
+          request.post('deleteItem.js', item, (xhttp: XMLHttpRequest) => {
                //
           })
      }
@@ -78,12 +79,12 @@ class Home extends React.Component<RouteComponentProps, State> {
                item: item,
                user: this.state.user,
           }
-          postRequest('post', 'likeItemByUser.js', obj, (xhttp: XMLHttpRequest) => {
+          request.post('likeItemByUser.js', obj, (xhttp: XMLHttpRequest) => {
                const response = JSON.parse(xhttp.responseText);
 
                //this below function calls server to get the list of all Items
                if (response) {
-                    getRequest('getItem').then((response: Data) =>
+                    request.get('getItem').then((response: Data) =>
                          this.setState({
                               data: response.documents,
                               backup: response.documents,
@@ -110,6 +111,7 @@ class Home extends React.Component<RouteComponentProps, State> {
 
           return (
                <Fragment>
+                    <Header userDetails={this.state.user as User} />
                     <div className="container p-0 mx-auto mt-5">
                          <ItemProvider value={contextObject}>
                               <Aside getValueForSearch={this.changeCharacter.bind(this)} />

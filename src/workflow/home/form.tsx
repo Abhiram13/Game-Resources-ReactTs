@@ -1,5 +1,5 @@
 import React from 'react';
-import { postRequest } from '../../helpers/helper';
+import request from '../../helpers/helper';
 import { FormState } from '../../helpers/interface';
 
 class Form extends React.Component<FormState> {
@@ -44,7 +44,7 @@ class Form extends React.Component<FormState> {
      }
 
      addData() {
-          postRequest('post', 'item.js', this.state, (xhttp: XMLHttpRequest) => {
+          request.post('item.js', this.state, (xhttp: XMLHttpRequest) => {
                const responseText = JSON.parse(xhttp.responseText);
                const status = responseText.status;
 
