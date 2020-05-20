@@ -1,5 +1,15 @@
 body {
    font-family: segoe-regular;
+   /* background-color: rgb(20, 31, 41); */
+   height: 100%;
+}
+
+html {
+   height: 100%;
+}
+
+.grey_gradient {
+   background-image: linear-gradient(rgb(20, 31, 41), rgb(8, 12, 17));
 }
 
 .shadow {

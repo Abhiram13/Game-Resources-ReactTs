@@ -1,84 +1,96 @@
 export interface State {
-     data: any | Array<any>;
-     char: string;
-     backup: string | Array<object> | any;
-     user: User | object;
-     loggedIn: boolean;
+   data: any | Array<any>;
+   char: string;
+   backup: string | Array<object> | any;
+   user: User | object;
+   loggedIn: boolean;
 }
 
 export interface Data {
-     documents: Array<object>;
+   documents: Array<object>;
 }
 
 export interface User {
-     _id: string;
-     comments: object[];
-     firstname: string;
-     isAdmin: boolean;
-     lastname: string;
-     likes: object[];
-     loggedIn: null | boolean;
-     password: string;
-     username: string;
+   _id: string;
+   comments: object[];
+   firstname: string;
+   isAdmin: boolean;
+   lastname: string;
+   likes: object[];
+   loggedIn: null | boolean;
+   password: string;
+   username: string;
 }
 
 export interface Likes {
-     _id: string;
-     username: string;
-     firstname: string;
-     lastname: string;
+   _id: string;
+   username: string;
+   firstname: string;
+   lastname: string;
 }
 
 export interface Item {
-     _id: string;
-     itemName: string;
-     category: string;
-     imageURL: string;
-     description: string;
-     rating?: number;
-     likes: Likes[],
-     comments: any[],
+   _id: string;
+   itemName: string;
+   category: string;
+   imageURL: string;
+   description: string;
+   rating?: number;
+   likes: Likes[],
+   comments: any[],
 }
 
 export interface AuthoriseState {
-     loginData: string | object;
-     signinData: string | object;
-     userExist: boolean;
+   loginData: string | object;
+   signinData: string | object;
+   userExist: boolean;
 }
 
 export interface LoginInterface {
-     credentials: any;
-     newUser: any;
+   credentials: any;
+   newUser: any;
 }
 
 export interface SignInInterface {
-     create: any;
-     exist: any;
+   create: any;
+   exist: any;
 }
 
 export interface FormState {
-     itemName: string;
-     description: string;
-     category: string;
-     imageURL: string;
-     rating: number;
+   itemName: string;
+   description: string;
+   category: string;
+   imageURL: string;
+   rating: number;
 }
 
 export interface ViewModalProps {
-     item: Item,
+   item: Item,
 }
 
 export interface SearchNameProps {
-     getValue: any;
+   getValue: any;
 }
 
 export interface SearchNameItem {
-     _id: string,
-     itemName: string,
+   _id: string,
+   itemName: string,
 }
 
 export interface SearchNameState {
-     value: string,
-     list: string,
-     array: Item[],
+   value: string,
+   list: string,
+   array: Item[],
+}
+
+export interface InputProps {
+   readonly type: string;
+   readonly placeholder: string;
+   readonly class: string;
+   value: any;
+   id: string;   
+}
+
+export interface InputState {
+   [id:string]: string;
 }
