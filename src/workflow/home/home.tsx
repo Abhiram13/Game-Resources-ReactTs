@@ -97,7 +97,7 @@ class Home extends React.Component<RouteComponentProps, State> {
    itemDetails = (item: Item): void => {
       const user = this.state.user as User;
       if (user.isAdmin) {
-         window.location.assign(`/${item._id}_${user._id}/details`);
+         this.props.history.push(`/${user._id}_${item._id}/details`);
          return;
       }
    }
@@ -119,36 +119,32 @@ class Home extends React.Component<RouteComponentProps, State> {
 
                <hr />
 
-               <div className="border rounded d-flex flex-wrap position-relative justify-content-between px-5">
+               <div className="d-flex flex-wrap position-relative justify-content-between">
                   {(data !== '') &&
                      data.map((item: Item, i: number) => {
                         return (
                            <Fragment key={item._id}>
-                              <section className="col-sm-3 p-0 shadow mr-3 mb-5">
-                                 <section className="col-sm p-0 h-75">
+                              <section className="p-0 shadow mb-5 bg-white" style={{ width: '22%', borderRadius: '13px' }}>
+                                 <section className="col-sm-9 p-0 box_shadow mx-auto mt-3" style={{ borderRadius: '13px' }}>
                                     {
                                        (item.imageURL === "")
-                                          ? <div className="w-100 h-100 bg-white shadow-sm">
-                                             <img
-                                                src="https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png"
-                                                className="w-100 h-100"
-                                                alt=""
-                                             />
-                                          </div>
+                                          ? <img
+                                             src="https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png"
+                                             className="w-100 h-100"
+                                             alt=""
+                                          />
                                           : <img src={item.imageURL} className="w-100 h-100" alt={item.itemName} />
                                     }
                                  </section>
 
-                                 <section className="col-sm p-0 bg-white h-25">
+                                 <section className="col-sm p-0 bg-white h-25 mt-3 radius">
                                     <section>
-                                       <small className="d-block text-center">{item.category}</small>
-                                       <h5 className="text-center itemTitle pointer" onClick={() => this.itemDetails(item)}>{item.itemName}</h5>
+                                       <h5 className="text-center itemTitle pointer m-0 itemTitle" onClick={() => this.itemDetails(item)}>{item.itemName}</h5>
+                                       <small className="d-block text-center lightGrey">{item.category}</small>
                                     </section>
-                                    <section className="d-flex justify-content-between px-3">
-                                       <small onClick={() => this.like(item)} className="pointer">
-                                          {`Likes: ${item.likes.length}`}
-                                       </small>
-                                       <small>Comment</small>
+                                    <section className="d-flex justify-content-between px-3 my-2">
+                                       <small className="pointer">Likes: {item.likes.length}</small>
+                                       {/* <small>Comment</small> */}
                                     </section>
                                  </section>
                               </section>
@@ -160,6 +156,7 @@ class Home extends React.Component<RouteComponentProps, State> {
                         )
                      })
                   }
+                  
                </div>
 
             </div>

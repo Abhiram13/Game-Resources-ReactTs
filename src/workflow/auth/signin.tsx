@@ -24,7 +24,6 @@ const SignIn: React.FunctionComponent<SignInInterface> = (props: SignInInterface
    const [checked, setCheckBox] = useState<boolean>(false);
 
    const getUsername = (value: string): void => {
-      console.log(value);
       setUserName(value);
    }
 

@@ -29,6 +29,14 @@ html {
    color: #449D44;
 }
 
+.lightGrey {
+   color: #C3C3C3;
+}
+
+.radius {
+   border-radius: 9px;
+}
+
 .signinBlue {
    background-color: #3086FC;
 }

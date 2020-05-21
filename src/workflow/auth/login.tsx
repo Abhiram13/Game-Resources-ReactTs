@@ -20,12 +20,10 @@ const Login: React.FunctionComponent<LoginInterface> = (props: LoginInterface): 
    const [login_password, updatePassWord] = useState<string>('');
 
    const getValue = (value: string): void => {
-      console.log(value);
       updateUserName(value);
    }
 
    const getPassWord = (password: string): void => {
-      console.log(password);
       updatePassWord(password);
    }
 
