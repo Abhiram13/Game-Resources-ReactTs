@@ -73,9 +73,12 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
                      <section className="col-sm-6 p-0 m-0">
                         <h1><strong>{item.itemName}</strong></h1>
                         <p className="m-0 p-0 mb-5">{item.description}</p>
-                        <span>
-                           Liked by <strong>{renderLikes(item.likes, userID)}</strong>
-                        </span>
+                        {
+                           item.likes.length > 0 &&
+                           <span>
+                              Liked by <strong>{renderLikes(item.likes, userID)}</strong>
+                           </span>
+                        }                  
                      </section>
                   </Fragment>
                }

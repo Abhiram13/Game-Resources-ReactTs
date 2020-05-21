@@ -79,6 +79,7 @@ class Home extends React.Component<RouteComponentProps, State> {
          item: item,
          user: this.state.user,
       }
+
       request.post('likeItemByUser.js', obj, (xhttp: XMLHttpRequest) => {
          const response = JSON.parse(xhttp.responseText);
 
@@ -102,12 +103,23 @@ class Home extends React.Component<RouteComponentProps, State> {
       }
    }
 
+   findLikedItem = (item:Item, userId: string):boolean => {
+      for (let i = 0; i < item.likes.length; i++) {
+         if (userId === item.likes[i].username) {
+            return true;
+         }
+      }
+      return false;
+   } 
+
    render(): React.ReactNode {
       const { data } = this.state;
       const contextObject: Context = {
          total: data.length,
          data: data,
       }
+
+      const userId = window.location.pathname.split('/')[1];
 
       return (
          <Fragment>
@@ -143,7 +155,13 @@ class Home extends React.Component<RouteComponentProps, State> {
                                        <small className="d-block text-center lightGrey">{item.category}</small>
                                     </section>
                                     <section className="d-flex justify-content-between px-3 my-2">
-                                       <small className="pointer">Likes: {item.likes.length}</small>
+                                       <small className="pointer" onClick={() => this.like(item)}>
+                                          {
+                                             this.findLikedItem(item, userId) 
+                                             ? <span style={{ color: '#FF1968' }}>Liked: {item.likes.length}</span>
+                                             : <span>Like: {item.likes.length}</span>
+                                          }                                          
+                                       </small>
                                        {/* <small>Comment</small> */}
                                     </section>
                                  </section>

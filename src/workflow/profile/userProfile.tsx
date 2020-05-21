@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export default class UserProfile extends React.Component {
    render(): React.ReactElement {
       return (
-         <h1>User Profile</h1>
+         <Fragment>
+            <h4>This is User Profile</h4>
+         </Fragment>
       )
    }
 }
