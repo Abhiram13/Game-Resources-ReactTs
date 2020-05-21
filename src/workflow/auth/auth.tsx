@@ -49,7 +49,7 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
             <div className="row" style={{ height: '-webkit-fill-available' }}>
                <section className="col-sm-6 p-0 m-0 position-relative">
                   <div className="col-sm-8 p-0 m-0 position-absolute" style={{ top: '40%', left: '10%' }}>
-                     <h1 style={{ fontSize: '3.4rem' }}><strong className="text-white">Welcome User,</strong></h1>
+                     <h1 className="m-0" style={{ fontSize: '3.4rem' }}><strong className="text-white">Welcome User,</strong></h1>
                      <p className="m-0 p-0 text-white">
                         {this.state.userExist ? 'Please Login to your Account' : 'Please Create your Account'}
                      </p>

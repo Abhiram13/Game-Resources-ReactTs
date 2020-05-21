@@ -31,17 +31,19 @@ const Login: React.FunctionComponent<LoginInterface> = (props: LoginInterface): 
 
    return (
       <React.Fragment>
-         <div className="p-3" style={{ marginTop: '61px' }}>
+         <div className="p-3" style={{ marginTop: '106px' }}>
             <Input type="text" placeholder="Username" id="123" value={getValue} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
-            <Input type="password" placeholder="Password" id="1pass" value={getPassWord} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />            
+            <Input type="password" placeholder="Password" id="1pass" value={getPassWord} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
             <button
                type="button"
-               className="btn btn-info d-block mx-auto col-sm-3 py-1"
-               onClick={() => sendLoginCred(login_username, login_password, props)}>Submit</button>
-         </div>
-         <p className="text-info text-center m-0 p-0 pointer">
-            <small onClick={() => props.newUser(false)}>New User?</small>
-         </p>
+               className="btn text-white d-block mx-auto col-sm-3 py-1 loginGreen"
+               onClick={() => sendLoginCred(login_username, login_password, props)}>Login</button>
+            <p className="text-center m-0 p-0 mt-4">
+               <small>Don't have and Account? </small>
+               <small className="signinColor pointer" onClick={() => props.newUser(false)}>Sign Up!</small>
+            </p>
+            {/* <small className="m-0 p-0 mt-5 d-block text-center">Incorrect Password</small> */}
+         </div>     
       </React.Fragment>
    );
 }
