@@ -47,18 +47,22 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       return (
          <Fragment>            
             <div className="row" style={{ height: '-webkit-fill-available' }}>
-               <section className="col-sm-6 p-0 m-0 position-relative" style={{ backgroundColor: 'green' }}>
-                  <div className="col-sm-5 p-0 m-0 position-absolute" style={{ top: '30%', left: '37%' }}>
-                     <h1 style={{ fontSize: '4.4rem' }}><strong className="text-white">{this.state.userExist ? 'Login' : 'SignUp'}</strong></h1>
-                     <p className="m-0 p-0 text-white">Please Login to your Account</p>
+               <section className="col-sm-6 p-0 m-0 position-relative">
+                  <div className="col-sm-8 p-0 m-0 position-absolute" style={{ top: '40%', left: '10%' }}>
+                     <h1 style={{ fontSize: '3.4rem' }}><strong className="text-white">Welcome User,</strong></h1>
+                     <p className="m-0 p-0 text-white">
+                        {this.state.userExist ? 'Please Login to your Account' : 'Please Create your Account'}
+                     </p>
                   </div>
                </section>
                <section className="col-sm-6 p-0 m-0 position-relative">
-                  {
-                     this.state.userExist
-                        ? <Login credentials={this.getLoginCredentials} newUser={this.createUser} />
-                        : <SignIn create={this.getSignUpCredentials} exist={this.existingUser} />
-                  }
+                  <div className="col-sm-7 p-0 mx-auto position-absolute bg-white box_shadow" style={{ top: '17%', left: '25%', borderRadius: '18px', height: '450px' }}>
+                     {
+                        this.state.userExist
+                           ? <Login credentials={this.getLoginCredentials} newUser={this.createUser} />
+                           : <SignIn create={this.getSignUpCredentials} exist={this.existingUser} />
+                     }
+                  </div>
                </section>
             </div>
          </Fragment>

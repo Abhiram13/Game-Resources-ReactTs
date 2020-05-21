@@ -8,7 +8,7 @@ export default class Input extends React.Component<InputProps, InputState> {
 
    eventHandler = (event: {target: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement}):void => {
       this.setState({
-         [event.target.id]: event.target.value,
+         [this.props.id]: event.target.value,
       }, () => this.props.value(this.state[this.props.id]));
    }
 

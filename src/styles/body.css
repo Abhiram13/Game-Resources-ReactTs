@@ -1,19 +1,44 @@
 body {
-   font-family: segoe-regular;
-   /* background-color: rgb(20, 31, 41); */
+   font-family: 'Hind', sans-serif;
    height: 100%;
+   background-color: #E5D6BF;
 }
 
 html {
    height: 100%;
 }
 
-.grey_gradient {
-   background-image: linear-gradient(rgb(20, 31, 41), rgb(8, 12, 17));
+.box_shadow {
+   box-shadow: 0 0 32px -18px;
 }
 
-.shadow {
-   box-shadow: 1px 1px 18px -7px;
+.inputField {
+   text-align: center;
+}
+
+.inputField::placeholder {
+   text-align: center;
+   color: #D0D0D0;
+}
+
+.loginGreen {
+   background-color: #449D44;
+}
+
+.loginColor {
+   color: #449D44;
+}
+
+.signinBlue {
+   background-color: #3086FC;
+}
+
+.signinColor {
+   color: #3086FC;
+}
+
+.greenishBlue {
+   background-color: #55BAB6;
 }
 
 .pointer {
@@ -26,53 +51,4 @@ html {
 
 .itemTitle:hover {
    color: deepskyblue;
-}
-
-@media only screen and (max-width: 500px) {
-   .widthAuto {
-      width: auto !important;
-   }
-
-   .widthAuto .ml30 {
-      margin-left: 30px !important;
-   }
-   .inherit {
-      display: initial !important;
-   }
-
-   aside { display: none !important; }
-
-   .inherit h2 {
-      margin-top: 30px !important;
-   }
-}
-
-/* SEGOE FONTS */
-
-@font-face {
-   font-family: segoe-regular;
-   font-weight: 400;
-   font-style: normal;
-   src: url('../Fonts/Segoe/Segoe\ UI.ttf');
-}
-
-@font-face {
-   font-family: segoe-regular;
-   font-weight: 400;
-   font-style: italic;
-   src: url('../Fonts/Segoe/Segoe\ UI\ Italic.ttf');
-}
-
-@font-face {
-   font-family: segoe-regular;
-   font-weight: 700;
-   font-style: normal;
-   src: url('../Fonts/Segoe/Segoe\ UI\ Bold.ttf');
-}
-
-@font-face {
-   font-family: segoe-regular;
-   font-weight: 700;
-   font-style: italic;
-   src: url('../Fonts/Segoe/Segoe\ UI\ Bold\ Italic.ttf');
 }

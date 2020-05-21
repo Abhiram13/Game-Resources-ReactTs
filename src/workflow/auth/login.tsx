@@ -19,34 +19,21 @@ const Login: React.FunctionComponent<LoginInterface> = (props: LoginInterface): 
    const [login_username, updateUserName] = useState<string>('');
    const [login_password, updatePassWord] = useState<string>('');
 
-   const getValue = (value:string):void => {
+   const getValue = (value: string): void => {
       console.log(value);
+      updateUserName(value);
    }
 
-   const getPassWord = (password:string):void => {
+   const getPassWord = (password: string): void => {
       console.log(password);
+      updatePassWord(password);
    }
 
    return (
-      <div className="col-sm-9 p-0 mx-auto position-absolute" style={{ top: '30%', left: '12%' }}>
-         <div className="p-3">
-            <Input type="text" placeholder="Username" id="123" value={getValue} class="bg-transparent text-white rounded p-2 mb-3 col-sm d-block border" />
-            <Input type="password" placeholder="Password" id="1pass" value={getPassWord} class="bg-transparent text-white rounded p-2 mb-3 col-sm d-block border" />
-            <input
-               type="text"
-               id="loginusername"
-               className="d-block col-sm p-0 rounded border p-2 mb-3"
-               placeholder="User Name"
-               value={login_username}
-               onChange={(event) => handleChange(event, updateUserName)}
-            />
-            <input
-               type="text"
-               id="loginpassword"
-               className="d-block col-sm p-0 rounded border p-2 mb-3"
-               placeholder="Password"
-               value={login_password}
-               onChange={(event) => handleChange(event, updatePassWord)} />
+      <React.Fragment>
+         <div className="p-3" style={{ marginTop: '61px' }}>
+            <Input type="text" placeholder="Username" id="123" value={getValue} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
+            <Input type="password" placeholder="Password" id="1pass" value={getPassWord} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />            
             <button
                type="button"
                className="btn btn-info d-block mx-auto col-sm-3 py-1"
@@ -55,7 +42,7 @@ const Login: React.FunctionComponent<LoginInterface> = (props: LoginInterface): 
          <p className="text-info text-center m-0 p-0 pointer">
             <small onClick={() => props.newUser(false)}>New User?</small>
          </p>
-      </div>
+      </React.Fragment>
    );
 }
 
