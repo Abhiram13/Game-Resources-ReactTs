@@ -1,2 +1,2 @@
 # clienttypescript
-The Client side of the Mordor which was written with TypeScript
+The Client side which was written with TypeScript and ReactJS
