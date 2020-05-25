@@ -85,10 +85,11 @@ class Home extends React.Component<RouteComponentProps, State> {
 
          //this below function calls server to get the list of all Items
          if (response) {
-            request.get('getItem').then((response: Data) =>
+            request.get('getItem').then((res: Data) =>
                this.setState({
-                  data: response.documents,
-                  backup: response.documents,
+                  data: res.documents,
+                  backup: res.documents,
+                  user: response.user,
                })
             )
          }
