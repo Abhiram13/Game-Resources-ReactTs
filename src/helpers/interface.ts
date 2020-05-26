@@ -94,3 +94,7 @@ export interface InputProps {
 export interface InputState {
    [id:string]: string;
 }
+
+export interface postMethod {
+   (xhhtp:XMLHttpRequest): void;
+}
