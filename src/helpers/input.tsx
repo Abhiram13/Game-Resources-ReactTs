@@ -19,7 +19,7 @@ export default class Input extends React.Component<InputProps, InputState> {
          case 'number':
             return <input type="text" className={this.props.class} placeholder={this.props.placeholder} id={this.props.id} value={this.state[this.props.id]} onChange={this.eventHandler} />
          case 'password':
-            return <input type="text" className={this.props.class} placeholder={this.props.placeholder} id={this.props.id} value={this.state[this.props.id]} onChange={this.eventHandler} />
+            return <input type="password" className={this.props.class} placeholder={this.props.placeholder} id={this.props.id} value={this.state[this.props.id]} onChange={this.eventHandler} />
       }
    }
 

@@ -45,7 +45,7 @@ const SignIn: React.FunctionComponent<SignInInterface> = (props: SignInInterface
             <Input type="text" placeholder="Username" id="signin_username" value={getUsername} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
             <Input type="text" placeholder="First Name" id="signin_firstname" value={getFirstName} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
             <Input type="text" placeholder="Last Name" id="signin_lastname" value={getLastName} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
-            <Input type="text" placeholder="Password" id="signin_password" value={getPassword} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
+            <Input type="password" placeholder="Password" id="signin_password" value={getPassword} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
             <button
                type="button"
                className="btn d-block mx-auto col-sm-3 py-1 signinBlue text-white"
