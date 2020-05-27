@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import { LoginInterface } from '../../helpers/interface';
 import Input from '../../helpers/input';
 
-function handleChange(event: { target: HTMLInputElement }, state: any): void {
-   state(event.target.value);
-}
-
 function sendLoginCred(login: string, password: string, props: LoginInterface) {
    if (login && password) {
       props.credentials({

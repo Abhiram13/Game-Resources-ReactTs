@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface Context {
     total: number;
-    data: any;
+    data: object[] | string;
 }
 
 const Totalitems = React.createContext<Context>({total: 0, data: ''});

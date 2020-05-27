@@ -1,5 +1,5 @@
 export interface State {
-   data: any | Array<any>;
+   data: any | object[];
    char: string;
    backup: string | Array<object> | any;
    user: User | object;
@@ -7,7 +7,7 @@ export interface State {
 }
 
 export interface Data {
-   documents: Array<object>;
+   documents: object[];
 }
 
 export interface User {

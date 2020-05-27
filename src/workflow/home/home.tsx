@@ -120,7 +120,7 @@ class Home extends React.Component<RouteComponentProps, State> {
          data: data,
       }
 
-      const userId = window.location.pathname.split('/')[1];
+      const userId:string = window.location.pathname.split('/')[1];
 
       return (
          <Fragment>
