@@ -10,9 +10,9 @@ import Header from './header/header';
 
 class Home extends React.Component<RouteComponentProps, State> {
    state: State = {
-      data: '',
+      data: [],
       char: '',
-      backup: '',
+      backup: [],
       user: {},
       loggedIn: false,
    }
@@ -133,7 +133,7 @@ class Home extends React.Component<RouteComponentProps, State> {
                <hr />
 
                <div className="d-flex flex-wrap position-relative justify-content-between">
-                  {(data !== '') &&
+                  {(data !== []) &&
                      data.map((item: Item, i: number) => {
                         return (
                            <Fragment key={item._id}>

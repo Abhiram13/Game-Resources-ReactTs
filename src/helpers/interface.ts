@@ -1,13 +1,13 @@
 export interface State {
-   data: any | object[];
+   data: Item[];
    char: string;
-   backup: string | Array<object> | any;
+   backup: Item[];
    user: User | object;
    loggedIn: boolean;
 }
 
 export interface Data {
-   documents: object[];
+   documents: Item[];
 }
 
 export interface User {
@@ -37,7 +37,7 @@ export interface Item {
    description: string;
    rating?: number;
    likes: Likes[],
-   comments: any[],
+   comments: object[],
 }
 
 export interface AuthoriseState {
@@ -46,14 +46,27 @@ export interface AuthoriseState {
    userExist: boolean;
 }
 
+interface LoginValues {
+   login_username: string;
+   login_password: string;
+}
+
+interface SignUpValues {
+   userName: string;
+   firstName: string;
+   lastName: string;
+   passWord: string;
+   checkBox: boolean;
+}
+
 export interface LoginInterface {
-   credentials: any;
-   newUser: any;
+   credentials: ((a: LoginValues) => void);
+   newUser: ((a:boolean) => void);
 }
 
 export interface SignInInterface {
-   create: any;
-   exist: any;
+   create: ((a: SignUpValues) => void);
+   exist: ((a: boolean) => void);
 }
 
 export interface FormState {
@@ -69,7 +82,7 @@ export interface ViewModalProps {
 }
 
 export interface SearchNameProps {
-   getValue: any;
+   getValue: ((a: string) => void);
 }
 
 export interface SearchNameItem {
@@ -87,7 +100,7 @@ export interface InputProps {
    readonly type: string;
    readonly placeholder: string;
    readonly class: string;
-   value: any;
+   value: ((a: string) => void);
    id: string;   
 }
 
