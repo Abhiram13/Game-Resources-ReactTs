@@ -37,7 +37,7 @@ const Login: React.FunctionComponent<LoginInterface> = (props: LoginInterface): 
                <small className="signinColor pointer" onClick={() => props.newUser(false)}>Sign Up!</small>
             </p>
             {/* <small className="m-0 p-0 mt-5 d-block text-center">Incorrect Password</small> */}
-         </div>     
+         </div>
       </React.Fragment>
    );
 }

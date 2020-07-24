@@ -27,15 +27,15 @@ const SignIn: React.FunctionComponent<SignInInterface> = (props: SignInInterface
       setUserName(value);
    }
 
-   const getFirstName = (value:string):void => {
+   const getFirstName = (value: string): void => {
       setFirstName(value);
    }
 
-   const getLastName = (value:string):void => {
+   const getLastName = (value: string): void => {
       setLastName(value);
    }
 
-   const getPassword = (value:string):void => {
+   const getPassword = (value: string): void => {
       setPassword(value);
    }
 
@@ -54,7 +54,7 @@ const SignIn: React.FunctionComponent<SignInInterface> = (props: SignInInterface
                <small>Already have an Account? </small>
                <small className="pointer loginColor" onClick={() => props.exist(true)}>Login!</small>
             </p>
-         </div>         
+         </div>
       </React.Fragment>
    );
 }

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Header from '../home/header/header';
 import UserProfile from './userProfile';
 
-function tabContent(tab?:string) {
+function tabContent(tab?: string) {
    switch (tab) {
       case 'Profile':
          return <UserProfile />

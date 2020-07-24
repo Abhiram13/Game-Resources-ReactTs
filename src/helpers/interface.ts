@@ -61,7 +61,7 @@ interface SignUpValues {
 
 export interface LoginInterface {
    credentials: ((a: LoginValues) => void);
-   newUser: ((a:boolean) => void);
+   newUser: ((a: boolean) => void);
 }
 
 export interface SignInInterface {
@@ -101,13 +101,13 @@ export interface InputProps {
    readonly placeholder: string;
    readonly class: string;
    value: ((a: string) => void);
-   id: string;   
+   id: string;
 }
 
 export interface InputState {
-   [id:string]: string;
+   [id: string]: string;
 }
 
 export interface postMethod {
-   (xhhtp:XMLHttpRequest): void;
+   (xhhtp: XMLHttpRequest): void;
 }

@@ -9,7 +9,7 @@ class SearchByName extends React.Component<SearchNameProps, SearchNameState> {
       array: [],
    }
 
-   handleChange(value:string):void {
+   handleChange(value: string): void {
       this.setState({
          value: value,
       }, () => this.props.getValue(this.state.value));

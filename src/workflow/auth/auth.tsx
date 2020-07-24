@@ -45,7 +45,7 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
 
    render(): React.ReactNode {
       return (
-         <Fragment>            
+         <Fragment>
             <div className="row" style={{ height: '-webkit-fill-available' }}>
                <section className="col-sm-6 p-0 m-0 position-relative">
                   <div className="col-sm-8 p-0 m-0 position-absolute" style={{ top: '40%', left: '10%' }}>

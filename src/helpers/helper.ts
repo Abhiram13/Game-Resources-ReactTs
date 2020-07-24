@@ -1,7 +1,7 @@
 import { postMethod } from './interface';
 
 let request = (function () {
-   let server:string = 'http://localhost:5000';
+   let server: string = 'http://localhost:5000';
 
    return {
       post: function (url: string, data: object | string, func: postMethod) {

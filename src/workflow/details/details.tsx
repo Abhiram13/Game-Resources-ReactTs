@@ -68,7 +68,7 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
                                     alt=""
                                  />
                               </div>
-                        }                        
+                        }
                      </section>
                      <section className="col-sm-6 p-0 m-0">
                         <h1><strong>{item.itemName}</strong></h1>
@@ -78,7 +78,7 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
                            <span>
                               Liked by <strong>{renderLikes(item.likes, userID)}</strong>
                            </span>
-                        }                  
+                        }
                      </section>
                   </Fragment>
                }

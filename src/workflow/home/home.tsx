@@ -104,14 +104,14 @@ class Home extends React.Component<RouteComponentProps, State> {
       }
    }
 
-   findLikedItem = (item:Item, userId: string):boolean => {
+   findLikedItem = (item: Item, userId: string): boolean => {
       for (let i = 0; i < item.likes.length; i++) {
          if (userId === item.likes[i].username) {
             return true;
          }
       }
       return false;
-   } 
+   }
 
    render(): React.ReactNode {
       const { data } = this.state;
@@ -120,7 +120,7 @@ class Home extends React.Component<RouteComponentProps, State> {
          data: data,
       }
 
-      const userId:string = window.location.pathname.split('/')[1];
+      const userId: string = window.location.pathname.split('/')[1];
 
       return (
          <Fragment>
@@ -158,10 +158,10 @@ class Home extends React.Component<RouteComponentProps, State> {
                                     <section className="d-flex justify-content-between px-3 my-2">
                                        <small className="pointer" onClick={() => this.like(item)}>
                                           {
-                                             this.findLikedItem(item, userId) 
-                                             ? <span style={{ color: '#FF1968' }}>Liked: {item.likes.length}</span>
-                                             : <span>Like: {item.likes.length}</span>
-                                          }                                          
+                                             this.findLikedItem(item, userId)
+                                                ? <span style={{ color: '#FF1968' }}>Liked: {item.likes.length}</span>
+                                                : <span>Like: {item.likes.length}</span>
+                                          }
                                        </small>
                                        {/* <small>Comment</small> */}
                                     </section>
@@ -175,7 +175,7 @@ class Home extends React.Component<RouteComponentProps, State> {
                         )
                      })
                   }
-                  
+
                </div>
 
             </div>
