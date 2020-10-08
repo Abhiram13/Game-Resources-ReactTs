@@ -20,9 +20,10 @@ const Header: React.FunctionComponent = (): React.ReactElement => {
      };
 
      const [user, getUser] = useState<User>(obj);
+
      useEffect(() => {
           const id = window.location.pathname.split('/')[2] === 'details' ? window.location.pathname.split('/')[1].split('_')[0] : window.location.pathname.split('/')[1];
-          request.get(`${id}/home`).then((response: User[]) => {
+          request.get<User[]>(`${id}/home`).then((response: User[]) => {
                getUser(response[0]);
           });
      }, []);

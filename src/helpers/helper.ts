@@ -17,7 +17,7 @@ let request = (function() {
                XHTTP.send(JSON.stringify(data));
           },
 
-          get: async function(url: string): Promise<any> {
+          get: async function <T>(url: string): Promise<T> {
                const response = await fetch(`${server}/${url}`);
                const body = await response.json();
 

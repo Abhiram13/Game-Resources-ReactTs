@@ -19,14 +19,14 @@ class Home extends React.Component<RouteComponentProps, State> {
 
      componentDidMount() {
           //this below function calls server to get the details of User through UserID
-          request.get(`${window.location.pathname.split('/')[1]}/home`).then((response: object[]) => {
+          request.get<User[]>(`${window.location.pathname.split('/')[1]}/home`).then((response: User[]) => {
                this.setState({
                     user: response[0],
                });
           });
 
           //this below function calls server to get the list of all Items
-          request.get('getItem').then((response: Data) =>
+          request.get<Data>('getItem').then((response: Data) =>
                this.setState({
                     data: response.documents,
                     backup: response.documents,
@@ -85,7 +85,7 @@ class Home extends React.Component<RouteComponentProps, State> {
 
                //this below function calls server to get the list of all Items
                if(response) {
-                    request.get('getItem').then((res: Data) =>
+                    request.get<Data>('getItem').then((res: Data) =>
                          this.setState({
                               data: res.documents,
                               backup: res.documents,

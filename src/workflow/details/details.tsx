@@ -36,7 +36,7 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
      useEffect(() => {
           const [userId, itemId] = window.location.pathname.split('/')[1].split('_');
 
-          request.get(`${itemId}/details`).then((response: Item) => {
+          request.get<Item>(`${itemId}/details`).then((response: Item) => {
                getItem(response as Item);
                getUserId(userId);
           });
