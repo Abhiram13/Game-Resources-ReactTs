@@ -8,15 +8,15 @@ import Profile from './workflow/profile/profile';
 import './styles/body.css';
 
 function App() {
-     return (
-          <Router>
-               <Route exact path='/' component={Auth} />
-               <Route path='/:id/home' component={Home} />
-               <Route path="/:id/details" component={Details} />
-               <Route path="/:id/profile" component={Profile} />
-               <Route path='/add' component={Form} />
-          </Router>
-     );
+   return (
+      <Router>
+         <Route exact path='/' component={Auth} />
+         <Route path='/home' component={Home} />
+         <Route path="/:id/details" component={Details} />
+         <Route path="/:id/profile" component={Profile} />
+         <Route path='/add' component={Form} />
+      </Router>
+   );
 }
 
 export default App;

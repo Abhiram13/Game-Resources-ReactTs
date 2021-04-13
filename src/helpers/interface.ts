@@ -2,7 +2,7 @@ export interface State {
    data: Item[];
    char: string;
    backup: Item[];
-   user: User | object;
+   // user: User | object;
    loggedIn: boolean;
 }
 

@@ -10,29 +10,39 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       userExist: true,
       loginData: '',
       signinData: '',
-   };
+   };   
 
-   getLoginCredentials = (credentials: object): void => {
-      this.setState({loginData: credentials}, () => {
-         request.post('login', this.state.loginData, (XHTTP: XMLHttpRequest) => {
-            const response: ILoginResponse = JSON.parse(XHTTP.responseText);
-            console.log(response);
-            if (response.token) {
-               window.location.assign(`/${response.user._id}/home`);
-            } else {
-               alert('Incorrect UserName or Password');
-            }
-         });
+   getLoginCredentials =  (credentials: object): void => {
+      this.setState({loginData: credentials}, async () => {
+         // request.post('login', this.state.loginData, (XHTTP: XMLHttpRequest) => {
+         //    const response: ILoginResponse = JSON.parse(XHTTP.responseText);
+         //    console.log(response);
+         //    console.log(XHTTP);
+         //    if (response.token) {
+         //       this.props.history.push({
+         //          pathname: `/home`,
+         //          state: response.token,
+         //       });
+         //    } else {
+         //       alert('Incorrect UserName or Password');
+         //    }
+         // });
+         const x = await request.post('login', this.state.loginData);
+         const h = await x.headers;
+         
+         h.forEach((a, v) => {
+            console.log(`${v}: ${a}`);
+         })
       });
    };
 
    getSignUpCredentials = (credentials: object) => {
       this.setState({signinData: credentials}, () => {
-         request.post('signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
-            const response = JSON.parse(XHTTP.responseText);
-            alert((response.status) ? 'User has been Registered Successfully' : 'User has already been Registered');
-            this.setState({userExist: true});
-         });
+         // request.post('signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
+         //    const response = JSON.parse(XHTTP.responseText);
+         //    alert((response.status) ? 'User has been Registered Successfully' : 'User has already been Registered');
+         //    this.setState({userExist: true});
+         // });
       });
    };
 
