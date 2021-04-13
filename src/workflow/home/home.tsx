@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
-import request from '../../helpers/helper';
+import request, {Req} from '../../helpers/helper';
 import {State, Data, Item, User} from '../../helpers/interface';
 import {ItemProvider, Context} from '../../context/context';
-// import Aside from './aside/aside';
+import Aside from './aside/aside';
 // import View from './viewModal';
 // import Edit from './editModal';
 // import Header from './header/header';
@@ -20,7 +20,16 @@ class Home extends React.Component<RouteComponentProps, State> {
    async componentDidMount() {
       // console.log(this.props.location.state);
 
-      let a = await request.Get<Item[]>('item/findall', this.props.location.state as string);
+      // let a = await request.Get<Item[]>('item/findall', this.props.location.state as string);
+      let c = await fetch('item/findall');
+      let a = await c.json();
+
+      // let a = await Req<Item[]>('item/findall');
+
+      // console.log(c);
+      console.log(c);
+
+      // let a = await ().get;
 
       let b = await fetch("a");
 
@@ -123,9 +132,9 @@ class Home extends React.Component<RouteComponentProps, State> {
          <Fragment>
             {/* <Header /> */}
             <div className="container p-0 mx-auto mt-5">
-               {/* <ItemProvider value={contextObject}>
+               <ItemProvider value={contextObject}>
                   <Aside getValueForSearch={this.changeCharacter.bind(this)} />
-               </ItemProvider> */}
+               </ItemProvider>
 
                <h4>this is Home</h4>
 

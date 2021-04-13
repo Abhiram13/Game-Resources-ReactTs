@@ -33,9 +33,7 @@ const request = (function() {
       const headers = new Headers();
       headers.append("Token", token || "");
 
-      const response = await fetch(`${server}/${url}`, {
-         headers: headers
-      });
+      const response = await fetch(`${server}/${url}`);
 
       const body = await response.json();
 
@@ -49,4 +47,11 @@ const request = (function() {
    };
 })();
 
+async function Req<T>(url: string): Promise<T> {
+   let server: string = 'http://localhost:1996';
+   const response = await fetch(`${server}/${url}`);
+   return await response.json();
+}
+
 export default request;
+export {Req};
