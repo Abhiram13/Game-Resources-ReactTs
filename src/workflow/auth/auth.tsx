@@ -13,10 +13,10 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
    };
    
    async componentDidMount() {
-      let x = await fetch("b");
-      let y = await x.text();
+      const request = await fetch("checkToken");
+      const body = await request.text();
       
-      if (y === 'true' || y) {
+      if (request.status === 202) {
          this.props.history.push("/home");
          return;
       }
@@ -26,33 +26,16 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       this.setState({loginData: credentials}, async () => {
          const headers = new Headers();
          headers.append('Content-Type', 'application/json; charset=utf-8');
-         // request.post('login', this.state.loginData, (XHTTP: XMLHttpRequest) => {
-         //    const response: ILoginResponse = JSON.parse(XHTTP.responseText);
-         //    console.log(response);
-         //    console.log(XHTTP);
-         //    if (response.token) {
-         //       this.props.history.push({
-         //          pathname: `/home`,
-         //          state: response.token,
-         //       });
-         //    } else {
-         //       alert('Incorrect UserName or Password');
-         //    }
-         // });
+         
          const res = await fetch("login", {
             method: "POST",
             headers: headers,
             keepalive: true,
             body: JSON.stringify(this.state.loginData),
          });
-         const response: ILoginResponse = await res.json();
 
-         if (response.token) {
-            this.props.history.push({
-               pathname: `/home`,
-               state: response.token,
-            });
-         }
+         const response: ILoginResponse = await res.json();
+         response.user.username && this.props.history.push("/home");
       });
    };
 
