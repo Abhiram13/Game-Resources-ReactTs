@@ -2,8 +2,12 @@ import React, {Fragment} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 import Login from './login';
 import SignIn from './signin';
-import request from '../../helpers/helper';
 import {AuthoriseState, ILoginResponse} from '../../helpers/interface';
+
+interface ICookieLoginResponse {
+   message: string,
+   status: number,
+}
 
 class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
    state: AuthoriseState = {
@@ -14,9 +18,9 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
    
    async componentDidMount() {
       const request = await fetch("checkToken");
-      const body = await request.text();
+      const body: ICookieLoginResponse = await request.json();
       
-      if (request.status === 202) {
+      if (body.status === 202) {
          this.props.history.push("/home");
          return;
       }

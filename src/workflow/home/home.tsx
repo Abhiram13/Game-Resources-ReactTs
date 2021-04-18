@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
-import request, {Req} from '../../helpers/helper';
+import request, {Req, Request} from '../../helpers/helper';
 import {State, Data, Item, User} from '../../helpers/interface';
 import {ItemProvider, Context} from '../../context/context';
 import Aside from './aside/aside';
@@ -18,26 +18,16 @@ class Home extends React.Component<RouteComponentProps, State> {
    };
 
    async componentDidMount() {
-      // console.log(this.props.location.state);
-
-      // let a = await request.Get<Item[]>('item/findall', this.props.location.state as string);
       let c = await fetch('item/findall');
       let a = await c.json();
 
-      // let a = await Req<Item[]>('item/findall');
+      let x = await (await fetch('item/findall')).json();
 
-      // console.log(c);
-      console.log(c);
-
-      // let a = await ().get;
-
-      let b = await fetch("a");
-
-      console.log(await b.text());
+      console.log(x);
 
       this.setState({
-         data: a,
-         backup: a,
+         data: x,
+         backup: x,
       });
    }
 
