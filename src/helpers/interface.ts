@@ -116,3 +116,8 @@ export interface InputState {
 export interface postMethod {
    (xhhtp: XMLHttpRequest): void;
 }
+
+export interface ICookieLoginResponse {
+   message: string,
+   status: number,
+}

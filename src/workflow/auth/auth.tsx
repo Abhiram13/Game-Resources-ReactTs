@@ -2,12 +2,7 @@ import React, {Fragment} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 import Login from './login';
 import SignIn from './signin';
-import {AuthoriseState, ILoginResponse} from '../../helpers/interface';
-
-interface ICookieLoginResponse {
-   message: string,
-   status: number,
-}
+import {AuthoriseState, ILoginResponse, ICookieLoginResponse} from '../../helpers/interface';
 
 class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
    state: AuthoriseState = {

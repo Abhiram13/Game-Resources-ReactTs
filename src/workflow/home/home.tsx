@@ -6,7 +6,7 @@ import {ItemProvider, Context} from '../../context/context';
 import Aside from './aside/aside';
 // import View from './viewModal';
 // import Edit from './editModal';
-// import Header from './header/header';
+import Header from './header/header';
 
 class Home extends React.Component<RouteComponentProps, State> {
    state: State = {
@@ -18,16 +18,11 @@ class Home extends React.Component<RouteComponentProps, State> {
    };
 
    async componentDidMount() {
-      let c = await fetch('item/findall');
-      let a = await c.json();
-
-      let x = await (await fetch('item/findall')).json();
-
-      console.log(x);
+      const items: Item[] = await (await fetch('item/findall')).json();
 
       this.setState({
-         data: x,
-         backup: x,
+         data: items,
+         backup: items,
       });
    }
 
@@ -120,13 +115,11 @@ class Home extends React.Component<RouteComponentProps, State> {
 
       return (
          <Fragment>
-            {/* <Header /> */}
+            <Header />
             <div className="container p-0 mx-auto mt-5">
                <ItemProvider value={contextObject}>
                   <Aside getValueForSearch={this.changeCharacter.bind(this)} />
                </ItemProvider>
-
-               <h4>this is Home</h4>
 
                <hr />
 
