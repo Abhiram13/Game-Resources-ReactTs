@@ -141,22 +141,22 @@ class Home extends React.Component<RouteComponentProps, State> {
                                     }
                                  </section>
 
-                                 {/* <section className="col-sm p-0 bg-white h-25 mt-3 radius">
+                                 <section className="col-sm p-0 bg-white h-25 mt-3 radius">
                                     <section>
                                        <h5 className="text-center itemTitle pointer m-0 itemTitle">{item.itemName}</h5>
                                        <small className="d-block text-center lightGrey">{item.category}</small>
                                     </section>
                                     <section className="d-flex justify-content-between px-3 my-2">
-                                       <small className="pointer" onClick={() => this.like(item)}>
+                                       <small className="pointer">
                                           {/* {
                                              this.findLikedItem(item, userId)
                                                 ? <span style={{color: '#FF1968'}}>Liked: {item.likes.length}</span>
                                                 : <span>Like: {item.likes.length}</span>
-                                          } 
+                                          }  */}
                                        </small>
-                                       {/* <small>Comment</small>
+                                       <small>Comment</small>
                                     </section>
-                                 </section> */}
+                                 </section>
                               </section>
 
                               {/* MODAL */}
