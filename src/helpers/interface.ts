@@ -41,17 +41,17 @@ export interface Item {
 }
 
 export interface AuthoriseState {
-   loginData: string | object;
-   signinData: string | object;
+   loginData: LoginRequest;
+   signinData: SignUpRequest;
    userExist: boolean;
 }
 
-interface LoginValues {
+export interface LoginRequest {
    username: string;
    password: string;
 }
 
-interface SignUpValues {
+export interface SignUpRequest {
    userName: string;
    firstName: string;
    lastName: string;
@@ -65,12 +65,12 @@ export interface ILoginResponse {
 }
 
 export interface LoginInterface {
-   credentials: ((a: LoginValues) => void);
+   credentials: ((a: LoginRequest) => void);
    newUser: ((a: boolean) => void);
 }
 
 export interface SignInInterface {
-   create: ((a: SignUpValues) => void);
+   create: ((a: SignUpRequest) => void);
    exist: ((a: boolean) => void);
 }
 

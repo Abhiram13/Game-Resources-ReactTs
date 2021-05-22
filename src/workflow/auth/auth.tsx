@@ -2,13 +2,26 @@ import React, {Fragment} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 import Login from './login';
 import SignIn from './signin';
-import {AuthoriseState, ILoginResponse, ICookieLoginResponse} from '../../helpers/interface';
+import {AuthoriseState, ILoginResponse, ICookieLoginResponse, LoginRequest, SignUpRequest} from '../../helpers/interface';
+
+const LoginReq: LoginRequest = {
+   password: "",
+   username: "",
+}
+
+const SignUpReq: SignUpRequest = {
+   checkBox: false,
+   firstName: "",
+   lastName: "",
+   passWord: "",
+   userName: "",
+}
 
 class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
    state: AuthoriseState = {
       userExist: true,
-      loginData: '',
-      signinData: '',
+      loginData: LoginReq,
+      signinData: SignUpReq,
    };
    
    async componentDidMount() {
@@ -21,7 +34,7 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       }
    }
 
-   getLoginCredentials = (credentials: object): void => {
+   getLoginCredentials = (credentials: LoginRequest): void => {
       this.setState({loginData: credentials}, async () => {
          const headers = new Headers();
          headers.append('Content-Type', 'application/json; charset=utf-8');
@@ -38,7 +51,7 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       });
    };
 
-   getSignUpCredentials = (credentials: object) => {
+   getSignUpCredentials = (credentials: SignUpRequest) => {
       this.setState({signinData: credentials}, () => {
          // request.post('signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
          //    const response = JSON.parse(XHTTP.responseText);
@@ -48,13 +61,9 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       });
    };
 
-   createUser = (a: boolean): void => {
-      this.setState({userExist: a});
-   };
+   createUser = (data: boolean): void => this.setState({userExist: data});
 
-   existingUser = (a: boolean): void => {
-      this.setState({userExist: a});
-   };
+   existingUser = (data: boolean): void => this.setState({userExist: data});
 
    render(): React.ReactNode {
       return (
