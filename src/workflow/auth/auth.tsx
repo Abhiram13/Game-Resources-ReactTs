@@ -34,31 +34,55 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       }
    }
 
-   getLoginCredentials = (credentials: LoginRequest): void => {
-      this.setState({loginData: credentials}, async () => {
-         const headers = new Headers();
-         headers.append('Content-Type', 'application/json; charset=utf-8');
+   getLoginCredentials = async (credentials: LoginRequest): Promise<void> => {
+      // this.setState({loginData: credentials}, async () => {
+      //    const headers = new Headers();
+      //    headers.append('Content-Type', 'application/json; charset=utf-8');
          
-         const res = await fetch("login", {
-            method: "POST",
-            headers: headers,
-            keepalive: true,
-            body: JSON.stringify(this.state.loginData),
-         });
+      //    const res = await fetch("login", {
+      //       method: "POST",
+      //       headers: headers,
+      //       keepalive: true,
+      //       body: JSON.stringify(this.state.loginData),
+      //    });
 
-         const response: ILoginResponse = await res.json();
-         response.user.username && this.props.history.push("/home");
+      //    const response: ILoginResponse = await res.json();
+      //    response.user.username && this.props.history.push("/home");
+      // });
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json; charset=utf-8');
+
+      const res = await fetch("login", {
+         method: "POST",
+         headers: headers,
+         keepalive: true,
+         body: JSON.stringify(credentials),
       });
+
+      const response: ILoginResponse = await res.json();
+      response.user.username && this.props.history.push("/home");
    };
 
-   getSignUpCredentials = (credentials: SignUpRequest) => {
-      this.setState({signinData: credentials}, () => {
-         // request.post('signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
-         //    const response = JSON.parse(XHTTP.responseText);
-         //    alert((response.status) ? 'User has been Registered Successfully' : 'User has already been Registered');
-         //    this.setState({userExist: true});
-         // });
+   getSignUpCredentials = async (credentials: SignUpRequest) => {
+      // this.setState({signinData: credentials}, async () => {         
+      //    // request.post('signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
+      //    //    const response = JSON.parse(XHTTP.responseText);
+      //    //    alert((response.status) ? 'User has been Registered Successfully' : 'User has already been Registered');
+      //    //    this.setState({userExist: true});
+      //    // });
+      // });
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json; charset=utf-8');
+
+      const res = await fetch("signin", {
+         method: "POST",
+         headers: headers,
+         keepalive: true,
+         body: JSON.stringify(credentials),
       });
+
+      const response: ILoginResponse = await res.json();
+      response.user.username && this.props.history.push("/home");
    };
 
    createUser = (data: boolean): void => this.setState({userExist: data});
