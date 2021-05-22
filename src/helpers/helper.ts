@@ -31,24 +31,24 @@ const request = (function() {
 
 const SERVER: string = 'http://localhost:1996';
 
-class Request {
-   static async Get<T>(url: string): Promise<T> {
-      let x = new Headers();
-      x.append("Cookie", document.cookie);
-      const response = await fetch(`${SERVER}/${url}`, {
-         method: "GET",
-         headers: x,         
-      });
-      const body = await response.json();
-      return body;
-   }
-}
+// class Request {
+//    static async Get<T>(url: string): Promise<T> {
+//       let x = new Headers();
+//       x.append("Cookie", document.cookie);
+//       const response = await fetch(`${SERVER}/${url}`, {
+//          method: "GET",
+//          headers: x,         
+//       });
+//       const body = await response.json();
+//       return body;
+//    }
+// }
 
-async function Req<T>(url: string): Promise<T> {
-   let server: string = 'http://localhost:1996';
-   const response = await fetch(`${server}/${url}`);
-   return await response.json();
-}
+// async function Req<T>(url: string): Promise<T> {
+//    let server: string = 'http://localhost:1996';
+//    const response = await fetch(`${server}/${url}`);
+//    return await response.json();
+// }
 
 function headers(): Headers {
    const headers = new Headers();
@@ -67,4 +67,4 @@ function PostObject<T>(credentials: T) {
 }
 
 export default request;
-export {Req, Request, PostObject};
+export {PostObject};

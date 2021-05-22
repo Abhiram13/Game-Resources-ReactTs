@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
-import request, {Req, Request} from '../../helpers/helper';
+import request from '../../helpers/helper';
 import {State, Data, Item, User} from '../../helpers/interface';
 import {ItemProvider, Context} from '../../context/context';
 import Aside from './aside/aside';

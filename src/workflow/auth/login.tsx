@@ -15,13 +15,8 @@ const Login: React.FunctionComponent<LoginInterface> = (props: LoginInterface): 
    const [username, updateUserName] = useState<string>('');
    const [password, updatePassWord] = useState<string>('');
 
-   const getValue = (value: string): void => {
-      updateUserName(value);
-   };
-
-   const getPassWord = (password: string): void => {
-      updatePassWord(password);
-   };
+   const getValue = (value: string): void => updateUserName(value);
+   const getPassWord = (password: string): void => updatePassWord(password);
 
    return (
       <React.Fragment>
