@@ -50,5 +50,21 @@ async function Req<T>(url: string): Promise<T> {
    return await response.json();
 }
 
+function headers(): Headers {
+   const headers = new Headers();
+   headers.append('Content-Type', 'application/json; charset=utf-8');
+
+   return headers;
+}
+
+function PostObject<T>(credentials: T) {
+   return {
+      method: "POST",
+      headers: headers(),
+      keepalive: true,
+      body: JSON.stringify(credentials),
+   }
+}
+
 export default request;
-export {Req, Request};
+export {Req, Request, PostObject};

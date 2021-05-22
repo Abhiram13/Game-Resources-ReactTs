@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 import Login from './login';
 import SignIn from './signin';
+import {PostObject} from '../../helpers/helper';
 import {AuthoriseState, ILoginResponse, ICookieLoginResponse, LoginRequest, SignUpRequest} from '../../helpers/interface';
 
 const LoginReq: LoginRequest = {
@@ -42,32 +43,22 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
    }
 
    getLoginCredentials = async (credentials: LoginRequest): Promise<void> => {
-      const res = await fetch("login", {
-         method: "POST",
-         headers: this.headers(),
-         keepalive: true,
-         body: JSON.stringify(credentials),
-      });
-
+      const res = await fetch("login", PostObject<LoginRequest>(credentials));
       const response: ILoginResponse = await res.json();
       response.user.username && this.props.history.push("/home");
    };
 
-   getSignUpCredentials = async (credentials: SignUpRequest) => {     
-      const res = await fetch("signin", {
-         method: "POST",
-         headers: this.headers(),
-         keepalive: true,
-         body: JSON.stringify(credentials),
-      });
-      
+   getSignUpCredentials = async (credentials: SignUpRequest) => {      
+      const res = await fetch("login", PostObject<SignUpRequest>(credentials));
       const status: number = res.status;
 
-      if (status === 302) {
-         alert("User already Exists");
-      } else if (status === 400) {
-         alert("Provide valid credentials");
-         return;
+      switch (status) {
+         case 302:
+            alert("User already Exists");
+            break;
+         case 400:
+            alert("Provide valid credentials");
+            return;
       }
 
       this.setState({
