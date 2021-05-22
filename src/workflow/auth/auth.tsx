@@ -10,11 +10,11 @@ const LoginReq: LoginRequest = {
 }
 
 const SignUpReq: SignUpRequest = {
-   checkBox: false,
-   firstName: "",
-   lastName: "",
-   passWord: "",
-   userName: "",
+   isAdmin: false,
+   firstname: "",
+   lastname: "",
+   password: "",
+   username: "",
 }
 
 class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
@@ -34,27 +34,17 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       }
    }
 
-   getLoginCredentials = async (credentials: LoginRequest): Promise<void> => {
-      // this.setState({loginData: credentials}, async () => {
-      //    const headers = new Headers();
-      //    headers.append('Content-Type', 'application/json; charset=utf-8');
-         
-      //    const res = await fetch("login", {
-      //       method: "POST",
-      //       headers: headers,
-      //       keepalive: true,
-      //       body: JSON.stringify(this.state.loginData),
-      //    });
-
-      //    const response: ILoginResponse = await res.json();
-      //    response.user.username && this.props.history.push("/home");
-      // });
+   headers(): Headers {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json; charset=utf-8');
 
+      return headers;
+   }
+
+   getLoginCredentials = async (credentials: LoginRequest): Promise<void> => {
       const res = await fetch("login", {
          method: "POST",
-         headers: headers,
+         headers: this.headers(),
          keepalive: true,
          body: JSON.stringify(credentials),
       });
@@ -63,26 +53,26 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
       response.user.username && this.props.history.push("/home");
    };
 
-   getSignUpCredentials = async (credentials: SignUpRequest) => {
-      // this.setState({signinData: credentials}, async () => {         
-      //    // request.post('signIn.js', this.state.signinData, (XHTTP: XMLHttpRequest) => {
-      //    //    const response = JSON.parse(XHTTP.responseText);
-      //    //    alert((response.status) ? 'User has been Registered Successfully' : 'User has already been Registered');
-      //    //    this.setState({userExist: true});
-      //    // });
-      // });
-      const headers = new Headers();
-      headers.append('Content-Type', 'application/json; charset=utf-8');
-
+   getSignUpCredentials = async (credentials: SignUpRequest) => {     
       const res = await fetch("signin", {
          method: "POST",
-         headers: headers,
+         headers: this.headers(),
          keepalive: true,
          body: JSON.stringify(credentials),
       });
+      
+      const status: number = res.status;
 
-      const response: ILoginResponse = await res.json();
-      response.user.username && this.props.history.push("/home");
+      if (status === 302) {
+         alert("User already Exists");
+      } else if (status === 400) {
+         alert("Provide valid credentials");
+         return;
+      }
+
+      this.setState({
+         userExist: true,
+      })
    };
 
    createUser = (data: boolean): void => this.setState({userExist: data});

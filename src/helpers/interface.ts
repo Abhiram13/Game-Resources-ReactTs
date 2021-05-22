@@ -52,11 +52,11 @@ export interface LoginRequest {
 }
 
 export interface SignUpRequest {
-   userName: string;
-   firstName: string;
-   lastName: string;
-   passWord: string;
-   checkBox: boolean;
+   username: string;
+   firstname: string;
+   lastname: string;
+   password: string;
+   isAdmin: boolean;
 }
 
 export interface ILoginResponse {

@@ -5,11 +5,11 @@ import Input from '../../helpers/input';
 function sendData(userName: string, firstName: string, lastName: string, passWord: string, checkBox: boolean, props: SignInInterface): void {
    if (userName && firstName && lastName && passWord) {
       props.create({
-         userName: userName,
-         firstName: firstName,
-         lastName: lastName,
-         passWord: passWord,
-         checkBox: checkBox,
+         username: userName,
+         firstname: firstName,
+         lastname: lastName,
+         password: passWord,
+         isAdmin: checkBox,
       });
    }
    return;
