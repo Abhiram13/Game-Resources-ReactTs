@@ -104,7 +104,7 @@ export interface SearchNameState {
 export interface InputProps {
    readonly type: string;
    readonly placeholder: string;
-   readonly class: string;
+   // readonly class: string;
    value: ((a: string) => void);
    id: string;
 }

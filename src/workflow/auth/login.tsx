@@ -26,8 +26,8 @@ const Login: React.FunctionComponent<LoginInterface> = (props: LoginInterface): 
    return (
       <React.Fragment>
          <div className="p-3" style={{marginTop: '106px'}}>
-            <Input type="text" placeholder="Username" id="123" value={getValue} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
-            <Input type="password" placeholder="Password" id="1pass" value={getPassWord} class="bg-transparent rounded p-2 mb-3 col-sm d-block border inputField" />
+            <Input type="text" placeholder="Username" id="123" value={getValue} />
+            <Input type="password" placeholder="Password" id="1pass" value={getPassWord} />
             <button
                type="button"
                className="btn text-white d-block mx-auto col-sm-3 py-1 loginGreen"

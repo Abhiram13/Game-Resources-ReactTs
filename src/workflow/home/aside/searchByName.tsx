@@ -30,7 +30,7 @@ class SearchByName extends React.Component<SearchNameProps, SearchNameState> {
    }
 
    render() {
-      return <Input type="text" placeholder="Search" class="d-block col-sm-3 p-0 box_shadow border p-2 radius" value={this.handleChange.bind(this)} id="search" />;
+      return <Input type="text" placeholder="Search" value={this.handleChange.bind(this)} id="search" />;
    }
 }
 
