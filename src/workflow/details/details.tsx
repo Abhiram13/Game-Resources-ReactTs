@@ -42,6 +42,8 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
       });
    }, []);
 
+   const staticImage = 'https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png';
+
    return (
       <Fragment>
          <Header />
@@ -52,28 +54,16 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
                   <Fragment>
                      <section className="col-sm-4 p-0">
                         {
-                           item.imageURL === ''
-                              ? <div className="col-sm p-0 box_shadow bg-white" style={{borderRadius: '13px'}}>
-                                 <img
-                                    src='https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png'
-                                    className="w-100 h-100"
-                                    alt=""
-                                 />
-                              </div>
-                              : <div className="col-sm-9 p-0 box_shadow">
-                                 <img
-                                    src={item.imageURL}
-                                    className="w-100 h-100"
-                                    alt=""
-                                 />
-                              </div>
+                           <div className="col-sm-9 p-0 box_shadow">
+                              <img src={item.imageURL || staticImage} className="w-100 h-100" alt="" />
+                           </div>
                         }
                      </section>
                      <section className="col-sm-6 p-0 m-0">
                         <h1><strong>{item.itemName}</strong></h1>
                         <p className="m-0 p-0 mb-5">{item.description}</p>
                         {
-                           item.likes.length > 0 &&
+                           item.likes.length &&
                            <span>
                               Liked by <strong>{renderLikes(item.likes, userID)}</strong>
                            </span>
