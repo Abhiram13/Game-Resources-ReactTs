@@ -37,13 +37,14 @@ class ItemList extends React.Component<any, State> {
       const defaultImage = "https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png";
       const contextObject: Context = {
          total: this.state.items.length,
+         searchFunction: this.searchItems.bind(this)
       };
 
       return (
          <Fragment>
             <div className="container p-0 mx-auto mt-5">
                <ItemProvider value={contextObject}>
-                  <Aside getValueForSearch={this.searchItems.bind(this)} />
+                  <Aside />
                </ItemProvider>
 
                <hr />

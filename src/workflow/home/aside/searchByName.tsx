@@ -1,20 +1,21 @@
 import React, {Fragment} from 'react';
 import {SearchNameState, SearchNameProps, Item} from '../../../helpers/interface';
 import Input from '../../../helpers/input';
+import {ItemConsumer} from '../../../context/context';
 
-class SearchByName extends React.Component<SearchNameProps, SearchNameState> {
+class SearchByName extends React.Component<any, SearchNameState> {
    state: SearchNameState = {
-      value: '',
-      list: '',
-      array: [],
+      value: '', list: '', array: [],
    };
 
-   handleChange(value: string): void {
-      this.props.getValue(value);
-   }
-
    render() {
-      return <Input type="text" placeholder="Search" value={this.handleChange.bind(this)} id="search" />;
+      return (
+         <Fragment>
+            <ItemConsumer>
+               {item => <Input type="text" placeholder="Search" value={item.searchFunction} id="search" />}
+            </ItemConsumer>            
+         </Fragment>
+      )
    }
 }
 

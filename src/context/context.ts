@@ -2,10 +2,10 @@ import React from 'react';
 
 export interface Context {
    total: number;
-   // data: object[] | string;
+   searchFunction: (char: string) => void;
 }
 
-const Totalitems = React.createContext<Context>({total: 0});
+const Totalitems = React.createContext<Context>({total: 0, searchFunction: function () {}});
 const ItemProvider = Totalitems.Provider;
 const ItemConsumer = Totalitems.Consumer;
 
