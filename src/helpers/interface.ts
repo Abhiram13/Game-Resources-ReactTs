@@ -1,9 +1,6 @@
 export interface State {
-   data: Item[];
-   char: string;
+   items: Item[];
    backup: Item[];
-   // user: User | object;
-   loggedIn: boolean;
 }
 
 export interface Data {
