@@ -17,7 +17,7 @@ const View: React.FunctionComponent<ViewModalProps> = (props: ViewModalProps) =>
                      <section className="col-sm-3 p-0 pt-2">
                         <img
                            alt=""
-                           src={imageURL ? imageURL : 'https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png'}
+                           src={imageURL || 'https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png'}
                            width='120'
                            height='120' />
                      </section>
