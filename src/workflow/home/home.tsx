@@ -10,7 +10,9 @@ class Home extends React.Component {
             <Header />
             <div className="container p-0 mx-auto mt-5">
                <Router>
-                  <Route exact path='' component={ItemList} />
+                  <Route exact path=''>
+                     <ItemList />
+                  </Route>
                </Router>
             </div>
          </Fragment>         
