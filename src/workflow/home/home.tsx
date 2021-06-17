@@ -1,19 +1,27 @@
 import React, {Fragment} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './header/header';
 import ItemList from './list';
+import Details from '../details/details';
+
+function NoRoute() {
+   return <h5>This Route does not Exist</h5>;
+}
 
 class Home extends React.Component {
    render(): React.ReactNode {
       return (
          <Fragment>
             <Header />
-            <div className="container p-0 mx-auto mt-5">
-               <Router>
+            <div className="container p-0 mx-auto mt-5">               
+               <Switch>
                   <Route exact path=''>
                      <ItemList />
                   </Route>
-               </Router>
+                  <Route path="/details">
+                     <Details />
+                  </Route>
+               </Switch>
             </div>
          </Fragment>         
       )
@@ -21,3 +29,4 @@ class Home extends React.Component {
 }
 
 export default Home;
+export {NoRoute};

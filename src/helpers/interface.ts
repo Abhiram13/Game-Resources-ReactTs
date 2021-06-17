@@ -83,6 +83,11 @@ export interface ViewModalProps {
    item: Item,
 }
 
+export interface ItemListProps {
+   item: Item,
+   redirect: (id: string) => void,
+}
+
 export interface SearchNameProps {
    getValue: ((a: string) => void);
 }

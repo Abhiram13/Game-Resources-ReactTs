@@ -1,21 +1,21 @@
 import React, {Fragment} from 'react';
-import {State, Item, ViewModalProps} from '../../helpers/interface';
-import {withRouter} from 'react-router-dom';
+import {State, Item, ItemListProps} from '../../helpers/interface';
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 import {ItemProvider, Context} from '../../context/context';
 import Aside from './aside/aside';
 
-const ItemContainer: React.FunctionComponent<ViewModalProps> = (props: ViewModalProps): React.ReactElement => {
+const ItemContainer: React.FunctionComponent<ItemListProps> = ({item, redirect}: ItemListProps): React.ReactElement => {
    const defaultImage = "https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png";
    return (
       <section className="p-0 shadow mb-5 bg-white" style={{width: '22%', borderRadius: '13px'}}>
          <section className="col-sm-9 p-0 mx-auto mt-3" style={{borderRadius: '13px'}}>
-            <img src={props.item.imageURL || defaultImage} className="w-100 h-100" alt={props.item.itemName} />
+            <img src={item.imageURL || defaultImage} className="w-100 h-100" alt={item.itemName} />
          </section>
 
          <section className="col-sm p-0 bg-white h-25 mt-3 radius">
             <section>
-               <h5 className="text-center itemTitle pointer m-0 itemTitle">{props.item.itemName}</h5>
-               <small className="d-block text-center lightGrey">{props.item.category}</small>
+               <h5 className="text-center itemTitle pointer m-0 itemTitle" onClick={() => redirect(item._id)}>{item.itemName}</h5>
+               <small className="d-block text-center lightGrey">{item.category}</small>
             </section>
             <section className="d-flex justify-content-between px-3 my-2">
                <small className="pointer">
@@ -32,7 +32,7 @@ const ItemContainer: React.FunctionComponent<ViewModalProps> = (props: ViewModal
    )
 }
 
-class ItemList extends React.Component<any, State> {
+class ItemList extends React.Component<RouteComponentProps, State> {
    state: State = {
       items: [],
       backup: [],
@@ -62,6 +62,10 @@ class ItemList extends React.Component<any, State> {
       return;
    }
 
+   redirectToDetails(id: string) {
+      this.props.history.push("/details", id);
+   }
+
    render(): React.ReactElement {
       const {items} = this.state;
       const contextObject: Context = {
@@ -78,12 +82,12 @@ class ItemList extends React.Component<any, State> {
             <hr />
 
             <div className="d-flex flex-wrap position-relative justify-content-between">
-               {items.map((item: Item) => <ItemContainer item={item} key={item._id} />)}
+               {items.map((item: Item) => <ItemContainer redirect={this.redirectToDetails.bind(this)} item={item} key={item._id} />)}
             </div>
          </div>
       )
    }
 }
 
-export default ItemList;
+export default withRouter(ItemList);
 
