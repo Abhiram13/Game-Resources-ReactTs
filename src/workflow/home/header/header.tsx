@@ -19,7 +19,7 @@ const Header: React.FunctionComponent = (): React.ReactElement => {
 
    useEffect(() => {
       (async function() {
-         const response: ICookieLoginResponse = await (await fetch("fetchUserCookie")).json();
+         const response: ICookieLoginResponse = await (await fetch("/fetchUserCookie")).json();
          getUser(JSON.parse(response.message));
       })();
    }, []);

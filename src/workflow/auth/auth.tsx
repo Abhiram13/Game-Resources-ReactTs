@@ -45,7 +45,7 @@ class Auth extends React.Component<RouteComponentProps, AuthoriseState> {
    getLoginCredentials = async (credentials: LoginRequest): Promise<void> => {
       const res = await fetch("login", PostObject<LoginRequest>(credentials));
       const response: ILoginResponse = await res.json();
-      response.user.username && this.props.history.push("/home");
+      response.user.username && this.props.history.push("/home/");
    };
 
    getSignUpCredentials = async (credentials: SignUpRequest) => {      

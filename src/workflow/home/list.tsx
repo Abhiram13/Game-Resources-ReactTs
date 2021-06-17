@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {State, Item, ItemListProps} from '../../helpers/interface';
-import {withRouter, RouteComponentProps} from 'react-router-dom';
+import {withRouter, RouteComponentProps, useRouteMatch} from 'react-router-dom';
 import {ItemProvider, Context} from '../../context/context';
 import Aside from './aside/aside';
 
@@ -39,7 +39,7 @@ class ItemList extends React.Component<RouteComponentProps, State> {
    }
 
    async componentDidMount() {
-      const data: Item[] = await (await fetch('item/findall')).json() || [];
+      const data: Item[] = await (await fetch('/item/findall')).json() || [];
       this.setState({ items: data, backup: data });
    }
 
@@ -63,7 +63,13 @@ class ItemList extends React.Component<RouteComponentProps, State> {
    }
 
    redirectToDetails(id: string) {
-      this.props.history.push("/details", id);
+      const url: string = this.props.location.pathname;
+      console.log(this.props);
+      // this.props.history.push(url + "details", id);
+      this.props.history.push({
+         pathname: `${url}details`,
+         state: id,
+      })
    }
 
    render(): React.ReactElement {

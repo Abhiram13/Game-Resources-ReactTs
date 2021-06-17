@@ -34,19 +34,18 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
 
    // below method will only be called when Component gets Mounted
    useEffect(() => {
-      const [userId, itemId] = window.location.pathname.split('/')[1].split('_');
+      // const [userId, itemId] = window.location.pathname.split('/')[1].split('_');
 
-      request.Get<Item>(`${itemId}/details`).then((response: Item) => {
-         getItem(response as Item);
-         getUserId(userId);
-      });
+      // request.Get<Item>(`${itemId}/details`).then((response: Item) => {
+      //    getItem(response as Item);
+      //    getUserId(userId);
+      // });
    }, []);
 
    const staticImage = 'https://images.vexels.com/media/users/3/130737/isolated/preview/eda05fc56dfe940a821c06439bb7d49b-growing-plant-icon-by-vexels.png';
 
    return (
       <Fragment>
-         <Header />
          <section className="container m-0 p-0 mx-auto mt-5">
             <div className="col-sm p-0 d-flex justify-content-between">
                {
@@ -59,7 +58,7 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
                            </div>
                         }
                      </section>
-                     <section className="col-sm-6 p-0 m-0">
+                     {/* <section className="col-sm-6 p-0 m-0">
                         <h1><strong>{item.itemName}</strong></h1>
                         <p className="m-0 p-0 mb-5">{item.description}</p>
                         {
@@ -68,7 +67,7 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
                               Liked by <strong>{renderLikes(item.likes, userID)}</strong>
                            </span>
                         }
-                     </section>
+                     </section> */}
                   </Fragment>
                }
             </div>
