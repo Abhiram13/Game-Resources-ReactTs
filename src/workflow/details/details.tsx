@@ -1,4 +1,5 @@
 import React, {useEffect, useState, Fragment} from 'react';
+import {RouteComponentProps} from 'react-router-dom';
 import request from '../../helpers/helper';
 import {Item, Likes} from '../../helpers/interface';
 import Header from '../../workflow/home/header/header';
@@ -17,7 +18,7 @@ function renderLikes(likes: Likes[], userId: string): string {
    return array.join(', ');
 }
 
-const Details: React.FunctionComponent = (): React.ReactElement => {
+const Details: React.FunctionComponent = (props): React.ReactElement => {
    let obj: Item = {
       _id: '',
       category: '',
@@ -34,6 +35,7 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
 
    // below method will only be called when Component gets Mounted
    useEffect(() => {
+      console.log(props);
       // const [userId, itemId] = window.location.pathname.split('/')[1].split('_');
 
       // request.Get<Item>(`${itemId}/details`).then((response: Item) => {
@@ -52,11 +54,9 @@ const Details: React.FunctionComponent = (): React.ReactElement => {
                   item &&
                   <Fragment>
                      <section className="col-sm-4 p-0">
-                        {
-                           <div className="col-sm-9 p-0 box_shadow">
-                              <img src={item.imageURL || staticImage} className="w-100 h-100" alt="" />
-                           </div>
-                        }
+                        <div className="col-sm-9 p-0 box_shadow">
+                           <img src={item.imageURL || staticImage} className="w-100 h-100" alt="" />
+                        </div>
                      </section>
                      {/* <section className="col-sm-6 p-0 m-0">
                         <h1><strong>{item.itemName}</strong></h1>

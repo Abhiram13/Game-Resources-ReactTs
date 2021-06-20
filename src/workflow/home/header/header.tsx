@@ -35,7 +35,7 @@ const Header: React.FunctionComponent = (): React.ReactElement => {
             <div className="d-flex justify-content-between py-3">
                <section>Welcome, {user.firstname ?? ""} {user.lastname ?? ""}</section>
                <section className="d-flex justify-content-between col-sm-3 p-0">
-                  <span className="pointer" onClick={() => redirect(`/home`)}>Home</span>
+                  <span className="pointer" onClick={() => redirect(`/home/`)}>Home</span>
                   <span className="pointer">Profile</span>
                   <span className="pointer" onClick={() => logout()}>Log Out</span>
                </section>

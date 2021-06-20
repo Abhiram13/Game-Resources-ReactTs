@@ -5,7 +5,7 @@ import ItemList from './list';
 import Details from '../details/details';
 
 class Home extends React.Component {
-   render(): React.ReactNode {
+   render(): React.ReactNode {      
       return (
          <Fragment>
             <Header />

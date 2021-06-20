@@ -63,13 +63,12 @@ class ItemList extends React.Component<RouteComponentProps, State> {
    }
 
    redirectToDetails(id: string) {
-      const url: string = this.props.location.pathname;
-      console.log(this.props);
+      const url: string = this.props.location.pathname;      
       // this.props.history.push(url + "details", id);
       this.props.history.push({
          pathname: `${url}details`,
          state: id,
-      })
+      });
    }
 
    render(): React.ReactElement {

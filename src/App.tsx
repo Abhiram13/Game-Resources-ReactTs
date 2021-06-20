@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
          <Switch>
             <Route exact path='/' component={Auth} />
-            <Route exact strict path='/home/' component={Home} />
+            <Route path='/home/' component={Home} />
             <Route component={NoRoute} />
          </Switch>
       </BrowserRouter>
